@@ -28,7 +28,7 @@
             android:name="com.loitp.ui.activity.MainActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode" />
         <activity
-            android:name=".ui.activity.ReadNewsActivity"
+            android:name=".ui.activity.DetailActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode" />
     </application>
 

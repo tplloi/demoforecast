@@ -9,13 +9,11 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.annotation.LogTag
 import com.core.base.BaseFragment
-import com.core.utilities.LSharedPrefsUtil
 import com.core.utilities.LUIUtil
 import com.loitp.R
 import com.loitp.adapter.LoadMoreAdapter
 import com.loitp.adapter.RssItemsAdapter
-import com.loitp.constant.Cons
-import com.loitp.ui.activity.ReadNewsActivity
+import com.loitp.ui.activity.DetailActivity
 import com.loitp.viewmodels.MainViewModel
 import com.rss.RssItem
 import kotlinx.android.synthetic.main.frm_home.*
@@ -72,7 +70,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
             context?.let { c ->
                 val now = SystemClock.elapsedRealtime()
                 if (now - previousTime >= layoutItemRssTransformation.duration) {
-                    ReadNewsActivity.startActivity(context = c, transformationLayout = layoutItemRssTransformation, rssItem = rssItem)
+                    DetailActivity.startActivity(context = c, transformationLayout = layoutItemRssTransformation, rssItem = rssItem)
                     previousTime = now
                 }
             }

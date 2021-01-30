@@ -42,18 +42,12 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <ProgressBar
-                android:id="@+id/pb"
-                style="?android:attr/progressBarStyleHorizontal"
+            <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:indeterminateOnly="false"
-                android:progressTint="?attr/themeTextColor" />
-
-            <com.views.LWebView
-                android:id="@+id/webView"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:padding="@dimen/padding_medium"
+                android:text="@string/large_text"
+                android:textColor="?attr/themeTextColor" />
         </LinearLayout>
 
     </androidx.core.widget.NestedScrollView>
