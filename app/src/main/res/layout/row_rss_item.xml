@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.skydoves.transformationlayout.TransformationLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutItemRssTransformation"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:transformation_duration="500"
+    app:transformation_pathMode="arc">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_medium"
+        app:cardBackgroundColor="?attr/themeBackgroundColorMedium"
+        app:cardCornerRadius="@dimen/round_medium"
+        app:cardElevation="@dimen/w_1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivThumb"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scaleType="centerCrop"
+                tools:src="@color/colorPrimary" />
+
+            <LinearLayout
+                android:id="@+id/llTextContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?attr/themeBackgroundColorMedium"
+                android:orientation="vertical"
+                android:padding="@dimen/padding_medium">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:singleLine="true"
+                    android:textColor="?attr/themeTextColor"
+                    android:textSize="@dimen/txt_medium"
+                    android:textStyle="bold"
+                    tools:text="@string/app_name" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvDes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:singleLine="true"
+                    android:textColor="?attr/themeTextColor"
+                    android:textSize="@dimen/text_small"
+                    tools:text="@string/app_name" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvPubDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:singleLine="true"
+                    android:textColor="?attr/themeTextColor"
+                    android:textSize="@dimen/text_tiny"
+                    android:textStyle="italic"
+                    tools:text="@string/app_name" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</com.skydoves.transformationlayout.TransformationLayout>
+

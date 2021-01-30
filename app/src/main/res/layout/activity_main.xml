@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.infideap.drawerbehavior.AdvanceDrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/themeBackgroundColorMedium"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start">
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navViewStart"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:background="?attr/themeBackgroundColorMedium"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/view_drawer_start"
+        app:itemIconTint="?attr/themeTextColor"
+        app:itemTextColor="?attr/themeTextColor"
+        app:menu="@menu/menu_drawer_start" />
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navViewEnd"
+        android:layout_width="@dimen/w_300"
+        android:layout_height="match_parent"
+        android:layout_gravity="end"
+        android:background="?attr/themeBackgroundColorMedium"
+        android:fitsSystemWindows="false">
+
+        <include layout="@layout/view_drawer_end" />
+    </com.google.android.material.navigation.NavigationView>
+
+    <include
+        layout="@layout/view_drawer_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</com.infideap.drawerbehavior.AdvanceDrawerLayout>

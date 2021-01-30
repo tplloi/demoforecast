@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/actionRightDrawer"
+        android:icon="@drawable/ic_card_giftcard_white_18dp"
+        android:orderInCategory="100"
+        android:title="@string/right_drawer"
+        app:showAsAction="always" />
+</menu>

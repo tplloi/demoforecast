@@ -1,0 +1,23 @@
+﻿VnExpress hay Tin nhanh Việt Nam là một trang báo điện tử tại Việt Nam được thành lập bởi tập đoàn FPT, ra mắt vào ngày 26 tháng 02 năm 2001 và được Bộ Văn hóa - Thông tin cấp giấy phép số 511/GP - BVHTT ngày 25 tháng 11 năm 2002, hiện tại do FPT Online quản lý. Đây là trang báo đầu tiên ở Việt Nam chỉ có bản điện tử mà không có bản in giấy. Ngoài ra, Vnexpress cũng cho ra mắt một phiên bản báo điện tử Tiếng Anh để phục vụ người đọc tại nước ngoài.
+
+Theo trang web Alexa, VnExpress được xếp hạng top 5 trong những trang web có lượng truy cập nhiều nhất tại Việt Nam vào năm 2019.
+
+Tòa soạn của báo được đặt tại tầng 5, Tòa nhà FPT Cầu Giấy, số 17 phố Duy Tân, phường Dịch Vọng Hậu, quận Cầu Giấy, thành phố Hà Nội. Văn phòng đại diện được đặt tại tầng 6, Tòa nhà Exchange Tower - số 1 đường Nam Kỳ Khởi Nghĩa, Phường Nguyễn Thái Bình, Quận 1, thành phố Hồ Chí Minh.
+
+Hình thành
+Ngày 26 tháng 02 năm 2001, VnExpress chính thức ra mắt website được lập trình bằng ngôn ngữ VBScript trên nền tảng ứng dụng web ASP.NET, sử dụng phông chữ Unicode. Được lập trình bằng ngôn ngữ VB6 tương tác với ActiveX Object trên trình duyệt Internet Explorer của Microsoft, hệ thống quản lý nội dung hoạt động như một phần mềm trên máy tính giúp các biên tập viên của VnExpress có thể thực hiện các thao tác soạn thảo như trên Microsoft Word và lưu trực tiếp trên máy.
+
+Tuy nhiên, với sự nghèo nàn về tính năng của phiên bản HTML hiện hành thì ActiveX Object là lựa chọn tối ưu nhất, nhưng cũng có một hạn chế rất lớn là chỉ chạy được trên chính Internet Explorer. Chỉ đến sau này khi hệ thống quản lý nội dung được nâng cấp với cách tiếp cận mới hỗ trợ đa trình duyệt thì toàn bộ biên tập viên của VnExpress mới được giải phóng khỏi trình duyệt này.
+
+VnExpress khi mới bắt đầu đi vào hoạt động chỉ mua báo in về rồi cho nhân viên chọn bài tốt, hay, hấp dẫn rồi đánh máy và đưa lên các trang nội dung của mình. Trong bối cảnh cả nước chưa có báo điện tử thì cách làm này rất hiệu quả và lớp độc giả tiên tiến nhất quen lên mạng bắt đầu truy cập mỗi ngày một thường xuyên hơn.
+
+Phát triển
+Tiếp nối sự thành công của VnExpress, những năm 2004, 2005, các trang ngách như Ngôi sao, Gamethu, Số hóa, hay iOne, Du lịch… liên tục ra đời. Điều này khiến cho hệ thống bắt đầu phình to và trở nên nặng nề, gây khó khăn trong việc phát triển các tính năng mới dựa trên những công nghệ sẵn có. Đồng thời, việc tạo ra một toà soạn hội tụ chứ không triển khai độc lập các hệ thống quản lý, gây tốn nguồn lực để duy trì cũng là một bài toán khó mà đội ngũ công nghệ thời bấy giờ cần tìm lời giải.
+
+Năm 2012, VnExpress chuyển sang sử dụng mã nguồn mở. Đây là một quyết định mang tính bước ngoặt giúp giải quyết các bài toán cơ bản được nêu ra ở trên. Quá trình chuyển đổi hệ thống dữ liệu khổng lồ hơn mười năm của VnExpress sang mã nguồn mở kéo dài trong một năm với yêu cầu vừa thực hiện hoạt động chuyển đổi trong khi vẫn phải đảm bảo hệ thống trực tuyến không một phút chết. Bắt đầu từ Thể Thao, Số Hóa, Giải Trí rồi Gia Đình đến ngày 15 tháng 05 năm 2013, Kinh doanh – Chuyên trang cuối cùng cũng được chuyển đổi thành công, đánh dấu việc hoàn thiện hệ thống quản lý nội dung hội tụ.
+
+Song song với sự phát triển về số lượng độc giả, hình thức truy cập của người dùng cũng phát triển với xu hướng sử dụng điện thoại và các thiết bị khác ngoài máy tính để bàn. Nắm bắt xu hướng này, năm 2014, VnExpress chuyển sang phong cách thiết kế website đáp ứng nhu cầu hiển thị, phù hợp trên tất cả các thiết bị truy cập. Đội ngũ công nghệ tiếp tục đóng vai trò chủ đạo trong việc chuyển đổi hệ thống khổng lồ này.
+
+Bên cạnh đó, để đáp ứng sự tăng trưởng về nội dung, nâng cao trải nghiệm của độc giả, đội ngũ VnExpress không ngừng nghiên cứu và triển khai nhiều công nghệ mới đáp ứng nhu cầu thể hiện nội dung bằng nhiều hình thức khác nhau như bài e-Magazine, livestream trực tuyến… Cũng trong thời gian gần đây, đội ngũ kỹ thuật của VnExpress đang nghiên cứu và thử nghiệm để đưa vào sử dụng các công nghệ như: Hệ thống khuyến nghị người dùng, trợ lý ảo, cá nhân hoá độc giả và ứng dụng trí tuệ nhân tạo trong hoạt động xuất bản nội dung ở tương lai gần.
+
+Theo wikipedia.org.

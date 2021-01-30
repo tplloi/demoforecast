@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/navHome"
+            android:icon="@drawable/ic_home_black_48dp"
+            android:title="@string/home" />
+        <item
+            android:id="@+id/navSetting"
+            android:icon="@drawable/ic_settings_black_48dp"
+            android:title="@string/setting_vn" />
+        <item
+            android:id="@+id/navGithub"
+            android:icon="@drawable/ic_play_arrow_black_48dp"
+            android:title="@string/github" />
+        <item
+            android:id="@+id/navRateApp"
+            android:icon="@drawable/ic_rate_review_black_48dp"
+            android:title="@string/rate_app" />
+        <item
+            android:id="@+id/navMoreApp"
+            android:icon="@drawable/ic_get_app_black_48dp"
+            android:title="@string/more_app" />
+        <item
+            android:id="@+id/navFacebookFanPage"
+            android:icon="@drawable/ic_account_circle_black_48dp"
+            android:title="@string/facebook_fanpage" />
+        <item
+            android:id="@+id/navChatWithDev"
+            android:icon="@drawable/ic_chat_black_48dp"
+            android:title="@string/chat_with_dev" />
+        <item
+            android:id="@+id/navShareApp"
+            android:icon="@drawable/ic_share_black_48dp"
+            android:title="@string/share_app" />
+        <item
+            android:id="@+id/navAd"
+            android:icon="@drawable/ic_card_giftcard_black_48dp"
+            android:title="@string/why_u_see_ad_en" />
+        <item
+            android:id="@+id/navPolicy"
+            android:icon="@drawable/ic_edit_black_48dp"
+            android:title="@string/policy" />
+        <item
+            android:id="@+id/navDonation"
+            android:icon="@drawable/baseline_favorite_black_24dp"
+            android:title="@string/donation" />
+    </group>
+
+</menu>

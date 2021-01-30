@@ -1,0 +1,44 @@
+<resources>
+    <string name="app_name">Demo Forecast</string>
+    <string name="app_name_vn">Demo Forecast</string>
+
+<!--    https://drive.google.com/file/d/1femuL17MUTz7t0yqUkMWB5yCea1W6kqI/view?usp=sharing-->
+    <string name="link_gg_drive"><![CDATA[https://drive.google.com/uc?export=download&id=1femuL17MUTz7t0yqUkMWB5yCea1W6kqI]]></string><!--no need to edit this-->
+    <string name="link_cover"><![CDATA[https://live.staticflickr.com/4380/35997985613_8fd2eab2d9_c.jpg]]></string>
+
+    <!---->
+    <string name="str_b">a</string>
+    <string name="str_f">a</string>
+<!--    <string name="str_reward">a</string>-->
+    <string name="str_app_id">a</string>
+
+    <string name="deny">Từ chối</string>
+    <string name="yes">Vâng</string>
+    <string name="setting">Cài đặt</string>
+    <string name="need_permisson">Cần cấp quyền</string>
+    <string name="need_permisson_to_use_app">Cần cấp quyền để dùng được ứng dụng</string>
+    <string name="app_is_not_ready">Server đang bảo trì, vui lòng thử lại sau</string>
+    <string name="check_ur_connection">Vui lòng kiểm tra kết nối của bạn</string>
+    <string name="warning">Thông báo</string>
+    <string name="press_again_to_exit">Nhấn thêm lần nữa để thoát ứng dụng</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="rate_app">Đánh giá</string>
+    <string name="more_app">Thêm</string>
+    <string name="facebook_fanpage">Facebook fanpage</string>
+    <string name="share_app">Chia sẻ</string>
+    <string name="home">Trang chủ</string>
+    <string name="exit">Thoát</string>
+    <string name="try_again">Thử lại</string>
+    <string name="right_drawer">Right Drawer</string>
+    <string name="chat_with_dev">Hỗ trợ 24/7</string>
+    <string name="donation">Donation</string>
+    <string name="check_out">Check out</string>
+    <string name="github">Github</string>
+    <string name="copy_right_vnexpress">© 1997–2021. Toàn bộ bản quyền tin tức thuộc VnExpress</string>
+    <string name="dark_mode">Chế độ tối</string>
+    <string name="small_thumb">Trang tin thu gọn</string>
+    <string name="setting_success">Đã cài đặt thành công</string>
+    <string name="is_grid_view">Trình bày dạng lưới</string>
+
+</resources>

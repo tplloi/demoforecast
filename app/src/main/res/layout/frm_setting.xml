@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/themeBackgroundColorMedium"
+    android:orientation="vertical"
+    android:padding="@dimen/padding_medium">
+
+    <com.views.switchtoggle.appcompatswitch.LColorSwitchCompat
+        android:id="@+id/swEnableDarkMode"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/dark_mode"
+        android:textColor="?attr/themeTextColor"
+        android:textSize="@dimen/text_medium"
+        app:bgOffColor="@color/lightGrey"
+        app:bgOnColor="@color/lightGrey"
+        app:toggleOffColor="@color/colorPrimary"
+        app:toggleOnColor="@color/colorPrimary" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/w_1"
+        android:background="?attr/themeTextColor" />
+
+    <com.views.switchtoggle.appcompatswitch.LColorSwitchCompat
+        android:id="@+id/swSmallSizeItem"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/small_thumb"
+        android:textColor="?attr/themeTextColor"
+        android:textSize="@dimen/text_medium"
+        app:bgOffColor="@color/lightGrey"
+        app:bgOnColor="@color/lightGrey"
+        app:toggleOffColor="@color/colorPrimary"
+        app:toggleOnColor="@color/colorPrimary" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/w_1"
+        android:background="?attr/themeTextColor" />
+
+    <com.views.switchtoggle.appcompatswitch.LColorSwitchCompat
+        android:id="@+id/swIsGridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/is_grid_view"
+        android:textColor="?attr/themeTextColor"
+        android:textSize="@dimen/text_medium"
+        app:bgOffColor="@color/lightGrey"
+        app:bgOnColor="@color/lightGrey"
+        app:toggleOffColor="@color/colorPrimary"
+        app:toggleOnColor="@color/colorPrimary" />
+</LinearLayout>
