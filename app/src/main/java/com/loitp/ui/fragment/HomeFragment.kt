@@ -81,28 +81,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
             concatAdapter.addAdapter(it)
         }
 
-        val isGridView = LSharedPrefsUtil.instance.getBoolean(Cons.IS_GRID_VIEW, false)
-        val spanCount = if (isGridView) {
-            2
-        } else {
-            1
-        }
-        val gridLayoutManager = GridLayoutManager(context, spanCount)
-        if (isGridView) {
-            gridLayoutManager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
-                override fun getSpanSize(position: Int): Int {
-                    return if (position == concatAdapter.itemCount - 1) {
-                        if (isContainLoadMoreAdapter()) {
-                            2
-                        } else {
-                            1
-                        }
-                    } else {
-                        1
-                    }
-                }
-            }
-        }
+        val gridLayoutManager = GridLayoutManager(context, 1)
         recyclerView.layoutManager = gridLayoutManager
         recyclerView.adapter = concatAdapter
         LUIUtil.setScrollChange(

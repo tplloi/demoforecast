@@ -24,35 +24,4 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/w_1"
         android:background="?attr/themeTextColor" />
-
-    <com.views.switchtoggle.appcompatswitch.LColorSwitchCompat
-        android:id="@+id/swSmallSizeItem"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/small_thumb"
-        android:textColor="?attr/themeTextColor"
-        android:textSize="@dimen/text_medium"
-        app:bgOffColor="@color/lightGrey"
-        app:bgOnColor="@color/lightGrey"
-        app:toggleOffColor="@color/colorPrimary"
-        app:toggleOnColor="@color/colorPrimary" />
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/w_1"
-        android:background="?attr/themeTextColor" />
-
-    <com.views.switchtoggle.appcompatswitch.LColorSwitchCompat
-        android:id="@+id/swIsGridView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/is_grid_view"
-        android:textColor="?attr/themeTextColor"
-        android:textSize="@dimen/text_medium"
-        app:bgOffColor="@color/lightGrey"
-        app:bgOnColor="@color/lightGrey"
-        app:toggleOffColor="@color/colorPrimary"
-        app:toggleOnColor="@color/colorPrimary" />
 </LinearLayout>
