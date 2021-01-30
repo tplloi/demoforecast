@@ -56,7 +56,7 @@ class SplashActivity : BaseFontActivity() {
         isShowDialogCheck = true
         Dexter.withContext(this)
                 .withPermissions(
-                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
+//                        Manifest.permission.WRITE_EXTERNAL_STORAGE,
                         Manifest.permission.ACCESS_FINE_LOCATION
                 )
                 .withListener(object : MultiplePermissionsListener {
@@ -156,44 +156,51 @@ class SplashActivity : BaseFontActivity() {
 
     private fun checkReady() {
 
-        fun setReady() {
-            runOnUiThread {
-                isCheckReadyDone = true
-                goToHome()
-            }
-        }
-
-        if (LPrefUtil.getCheckAppReady()) {
-            setReady()
-            return
-        }
-        val linkGGDriveCheckReady = getString(R.string.link_gg_drive)
-        LStoreUtil.getTextFromGGDrive(
-                linkGGDrive = linkGGDriveCheckReady,
-                onGGFailure = { _: Call, e: Exception ->
-                    e.printStackTrace()
-                    showDialogNotReady()
-                },
-                onGGResponse = { listGG: ArrayList<GG> ->
-                    logD("getGG listGG: -> " + BaseApplication.gson.toJson(listGG))
-
-                    fun isReady(): Boolean {
-                        listGG.forEach { gg ->
-                            if (packageName == gg.pkg) {
-                                return gg.isReady
-                            }
-                        }
-                        return false
-                    }
-
-                    val isReady = isReady()
-                    if (isReady) {
-                        LPrefUtil.setCheckAppReady(value = true)
-                        setReady()
-                    } else {
-                        showDialogNotReady()
-                    }
+        //for demo purpose
+        val isOnlyForDemo = true
+        if (isOnlyForDemo) {
+            isCheckReadyDone = true
+            goToHome()
+        } else {
+            fun setReady() {
+                runOnUiThread {
+                    isCheckReadyDone = true
+                    goToHome()
                 }
-        )
+            }
+
+            if (LPrefUtil.getCheckAppReady()) {
+                setReady()
+                return
+            }
+            val linkGGDriveCheckReady = getString(R.string.link_gg_drive)
+            LStoreUtil.getTextFromGGDrive(
+                    linkGGDrive = linkGGDriveCheckReady,
+                    onGGFailure = { _: Call, e: Exception ->
+                        e.printStackTrace()
+                        showDialogNotReady()
+                    },
+                    onGGResponse = { listGG: ArrayList<GG> ->
+                        logD("getGG listGG: -> " + BaseApplication.gson.toJson(listGG))
+
+                        fun isReady(): Boolean {
+                            listGG.forEach { gg ->
+                                if (packageName == gg.pkg) {
+                                    return gg.isReady
+                                }
+                            }
+                            return false
+                        }
+
+                        val isReady = isReady()
+                        if (isReady) {
+                            LPrefUtil.setCheckAppReady(value = true)
+                            setReady()
+                        } else {
+                            showDialogNotReady()
+                        }
+                    }
+            )
+        }
     }
 }
