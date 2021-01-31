@@ -283,6 +283,7 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
         super.onNetworkChange(event)
 
         if (event.isConnected) {
+            mainViewModel?.setCurrentLocation(location = "")
             showSnackBarInfor(getString(R.string.internet_connected))
             refreshLocation()
         }

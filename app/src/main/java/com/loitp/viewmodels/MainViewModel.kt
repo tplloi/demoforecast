@@ -21,7 +21,7 @@ class MainViewModel(
     val offlineListOpenCageDataLiveData: MutableLiveData<List<Result>> = MutableLiveData()
 
     fun setCurrentLocation(location: String) {
-        currentLocationLiveData.postValue(location)
+        currentLocationLiveData.set(location)
     }
 
     fun setKeySearchLiveData(keySearch: String) {
