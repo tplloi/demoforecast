@@ -10,6 +10,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.annotation.LogTag
 import com.core.base.BaseApplication
 import com.core.base.BaseFragment
+import com.core.utilities.LConnectivityUtil
 import com.loitp.BuildConfig
 import com.loitp.R
 import com.loitp.adapter.OpenCageDataResultAdapter
@@ -76,6 +77,10 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         swRefresh.setOnRefreshListener(this)
 
         btSearch.setSafeOnClickListener {
+            if (!LConnectivityUtil.isConnected()) {
+                showSnackBarError(msg = getString(R.string.check_ur_connection))
+                return@setSafeOnClickListener
+            }
             context?.let { c ->
                 val now = SystemClock.elapsedRealtime()
                 if (now - previousTimeSearch >= layoutItemSearchTransformation.duration) {
@@ -143,7 +148,12 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
                                 logD("<<< success " + BaseApplication.gson.toJson(openCageData))
                             }, {
                                 logE("<<< error $it")
-                                showDialogError(errMsg = getString(R.string.no_data_eng), runnable = Runnable {
+                                val msg = if (LConnectivityUtil.isConnected()) {
+                                    getString(R.string.no_data_eng)
+                                } else {
+                                    getString(R.string.check_ur_connection)
+                                }
+                                showDialogError(errMsg = msg, runnable = Runnable {
                                     //do nothing
                                 })
                             }))

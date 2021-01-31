@@ -25,7 +25,6 @@ import com.core.common.Constants
 import com.core.helper.adhelper.AdHelperActivity
 import com.core.utilities.*
 import com.data.EventBusData
-import com.google.ads.interactivemedia.v3.internal.it
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
@@ -45,7 +44,6 @@ import com.loitp.util.LLocationUtil
 import com.loitp.viewmodels.MainViewModel
 import com.skydoves.transformationlayout.onTransformationStartContainer
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.frm_home.*
 import kotlinx.android.synthetic.main.view_drawer_end.*
 import kotlinx.android.synthetic.main.view_drawer_main.*
 
@@ -151,6 +149,10 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
         adView.resume()
         super.onResume()
 
+        refreshLocation()
+    }
+
+    private fun refreshLocation() {
         val currentLocation = mainViewModel?.currentLocationLiveData?.value
         logD("onResume currentLocation $currentLocation")
         if (currentLocation.isNullOrEmpty()) {
@@ -280,8 +282,10 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
     override fun onNetworkChange(event: EventBusData.ConnectEvent) {
         super.onNetworkChange(event)
 
-        //TODO
-        showSnackBarInfor("TODO onNetworkChange")
+        if (event.isConnected) {
+            showSnackBarInfor(getString(R.string.internet_connected))
+            refreshLocation()
+        }
     }
 
     private fun initLocation() {
@@ -309,6 +313,10 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
     }
 
     private fun updateLocationUI() {
+        if (!LConnectivityUtil.isConnected()) {
+            showSnackBarError(getString(R.string.check_ur_connection))
+            return
+        }
         if (isBottomSheetFragmentShowing) {
             logD("updateLocationUI return")
             return

@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import com.annotation.LogTag
 import com.core.base.BaseFragment
+import com.core.utilities.LConnectivityUtil
 import com.loitp.BuildConfig
 import com.loitp.R
 import com.loitp.adapter.OpenCageDataResultAdapter
@@ -103,7 +104,12 @@ class OnlineSearchFragment : BaseFragment() {
                                 logE("loadData error $it")
                                 indicatorView.smoothToHide()
                                 tvLabelChooseLocation.visibility = View.GONE
-                                showDialogError(errMsg = getString(R.string.no_data_eng), runnable = Runnable {
+                                val msg = if (LConnectivityUtil.isConnected()) {
+                                    getString(R.string.no_data_eng)
+                                } else {
+                                    getString(R.string.check_ur_connection)
+                                }
+                                showDialogError(errMsg = msg, runnable = Runnable {
                                     //do nothing
                                 })
                             }))

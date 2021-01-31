@@ -14,6 +14,7 @@ import com.core.base.BaseFontActivity
 import com.core.common.Constants
 import com.core.utilities.LScreenUtil
 import com.core.utilities.LUIUtil
+import com.data.EventBusData
 import com.loitp.R
 import com.loitp.model.opencagedata.Result
 import com.loitp.ui.fragment.OfflineKeyFragment
@@ -143,5 +144,24 @@ class SearchActivity : BaseFontActivity() {
         }
         setResult(Activity.RESULT_OK, returnIntent)
         finish()
+    }
+
+    override fun onNetworkChange(event: EventBusData.ConnectEvent) {
+        super.onNetworkChange(event)
+
+        if (!event.isConnected) {
+            showBottomSheetOptionFragment(
+                    isCancelableFragment = false,
+                    isShowIvClose = true,
+                    title = getString(R.string.warning),
+                    message = getString(R.string.check_ur_connection),
+                    textButton1 = getString(R.string.yes),
+                    onClickButton1 = {
+                        initLocation(result = null)
+                    },
+                    onDismiss = {
+                        initLocation(result = null)
+                    })
+        }
     }
 }

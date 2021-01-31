@@ -43,5 +43,6 @@
     <string name="suggestion">Suggestion</string>
     <string name="choose_your_location">Choose your location</string>
     <string name="pls_input_ur_location">Please input your location</string>
+    <string name="internet_connected">You are connected to the internet.</string>
 
 </resources>
