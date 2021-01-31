@@ -29,7 +29,7 @@
             android:singleLine="true"
             android:textAllCaps="false"
             android:textColor="?attr/themeTextColor"
-            android:textSize="@dimen/txt_large"
+            android:textSize="@dimen/txt_medium"
             app:drawableTint="?attr/themeTextColor"
             tools:text="Saigon" />
     </com.skydoves.transformationlayout.TransformationLayout>

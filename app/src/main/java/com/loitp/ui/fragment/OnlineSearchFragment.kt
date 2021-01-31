@@ -41,6 +41,7 @@ class OnlineSearchFragment : BaseFragment() {
     private fun setupViews() {
         openCageDataResultAdapter = OpenCageDataResultAdapter { result ->
             logD("OpenCageDataResultAdapter result " + result.formatted + " - " + result.geometry?.lat + " - " + result.geometry?.lng)
+            mainViewModel?.saveOpenCageData(result = result)
         }
         openCageDataResultAdapter?.let {
             concatAdapter.addAdapter(it)

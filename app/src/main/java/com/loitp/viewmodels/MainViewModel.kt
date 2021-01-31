@@ -2,8 +2,12 @@ package com.loitp.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import com.annotation.LogTag
+import com.core.base.BaseApplication
 import com.core.base.BaseViewModel
 import com.core.helper.mup.girl.model.GirlPage
+import com.core.helper.ttt.db.TTTDatabase
+import com.loitp.db.AppDatabase
+import com.loitp.model.opencagedata.Result
 import com.service.livedata.ActionData
 import com.service.livedata.ActionLiveData
 import kotlinx.coroutines.launch
@@ -14,7 +18,8 @@ class MainViewModel(
 ) : BaseViewModel() {
 
     val currentLocationLiveData: MutableLiveData<String> = MutableLiveData()
-//    val listDummyItemLiveData: MutableLiveData<List<DummyItem>> = MutableLiveData()
+
+    //    val listDummyItemLiveData: MutableLiveData<List<DummyItem>> = MutableLiveData()
     val keySearchLiveData: MutableLiveData<String> = MutableLiveData()
     val keySearchChangeLiveData: MutableLiveData<String> = MutableLiveData()
 
@@ -61,7 +66,22 @@ class MainViewModel(
         }
     }
 
-    fun getGeoCode(keyWord: String) {
+    fun saveOpenCageData(result: Result) {
+        logD("saveOpenCageData result " + result.formatted)
+        ioScope.launch {
+            val id = AppDatabase.instance?.openCageDataDao()?.insert(t = result)
+            logD("save id $id")
 
+            val list = getListOpenCageData("")
+            logD("list " + BaseApplication.gson.toJson(list))
+        }
+    }
+
+    fun getListOpenCageData(formatted: String) {
+        logD("getListOpenCageData formatted $formatted")
+        ioScope.launch {
+//            AppDatabase.instance?.openCageDataDao()?.getListResult(formatted = formatted)
+            AppDatabase.instance?.openCageDataDao()?.getListResult()
+        }
     }
 }

@@ -38,7 +38,7 @@
             android:textColor="?attr/themeTextColor"
             android:textColorHint="?attr/themeTextColor"
             android:textCursorDrawable="?attr/themeTextColor"
-            android:textSize="@dimen/txt_large"
+            android:textSize="@dimen/txt_medium"
             tools:text="Saigon" />
 
         <androidx.appcompat.widget.AppCompatImageButton
