@@ -43,10 +43,10 @@
             android:id="@+id/navPolicy"
             android:icon="@drawable/ic_edit_black_48dp"
             android:title="@string/policy" />
-        <item
+        <!--<item
             android:id="@+id/navDonation"
             android:icon="@drawable/baseline_favorite_black_24dp"
-            android:title="@string/donation" />
+            android:title="@string/donation" />-->
     </group>
 
 </menu>

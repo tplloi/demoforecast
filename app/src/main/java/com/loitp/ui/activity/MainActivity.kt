@@ -145,24 +145,25 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
                 startActivity(intent)
                 LActivityUtil.tranIn(this)
             }
-            R.id.navDonation -> {
-                currentItemId = R.id.navDonation
-                LScreenUtil.replaceFragment(
-                        activity = this,
-                        containerFrameLayoutIdRes = R.id.flContainer,
-                        fragment = FrmDonate(),
-                        isAddToBackStack = false
-                )
-            }
+//            R.id.navDonation -> {
+//                currentItemId = R.id.navDonation
+//                LScreenUtil.replaceFragment(
+//                        activity = this,
+//                        containerFrameLayoutIdRes = R.id.flContainer,
+//                        fragment = FrmDonate(),
+//                        isAddToBackStack = false
+//                )
+//            }
         }
 
         drawerLayout.closeDrawer(GravityCompat.START)
         navViewStart.postDelayed({
             if (currentItemId == R.id.navHome) {
                 navViewStart.menu.findItem(R.id.navHome).isChecked = true
-            } else if (currentItemId == R.id.navDonation) {
-                navViewStart.menu.findItem(R.id.navDonation).isChecked = true
             }
+//            else if (currentItemId == R.id.navDonation) {
+//                navViewStart.menu.findItem(R.id.navDonation).isChecked = true
+//            }
         }, 500)
         return true
     }
