@@ -15,6 +15,7 @@ import com.core.common.Constants
 import com.core.helper.adhelper.AdHelperActivity
 import com.core.helper.donate.FrmDonate
 import com.core.utilities.*
+import com.data.EventBusData
 import com.google.android.material.navigation.NavigationView
 import com.loitp.R
 import com.loitp.ui.fragment.HomeFragment
@@ -181,5 +182,12 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onNetworkChange(event: EventBusData.ConnectEvent) {
+        super.onNetworkChange(event)
+
+        //TODO
+        showSnackBarInfor("TODO onNetworkChange")
     }
 }
