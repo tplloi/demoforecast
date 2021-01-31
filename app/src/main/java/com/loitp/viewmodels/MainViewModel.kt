@@ -19,9 +19,14 @@ class MainViewModel : BaseViewModel() {
 
     val currentLocationLiveData: MutableLiveData<String> = MutableLiveData()
     val listDummyItemLiveData: MutableLiveData<List<DummyItem>> = MutableLiveData()
+    val keySearchLiveData: MutableLiveData<String> = MutableLiveData()
 
     fun setCurrentLocation(location: String) {
         currentLocationLiveData.postValue(location)
+    }
+
+    fun setKeySearchLiveData(keySearch: String) {
+        keySearchLiveData.postValue(keySearch)
     }
 
     fun loadData() {

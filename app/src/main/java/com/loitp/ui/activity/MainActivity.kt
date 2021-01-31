@@ -130,7 +130,7 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
                 }
             })
             mvm.currentLocationLiveData.observe(this, Observer { location ->
-                logE("currentLocationLiveData observe location $location")
+                logD("currentLocationLiveData observe location $location")
             })
         }
 

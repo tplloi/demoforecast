@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import androidx.lifecycle.Observer
 import com.annotation.IsFullScreen
 import com.annotation.LogTag
 import com.core.base.BaseFontActivity
@@ -15,6 +16,7 @@ import com.core.utilities.LUIUtil
 import com.loitp.R
 import com.loitp.ui.fragment.OfflineKeyFragment
 import com.loitp.ui.fragment.OnlineSearchFragment
+import com.loitp.viewmodels.MainViewModel
 import com.skydoves.transformationlayout.TransformationCompat
 import com.skydoves.transformationlayout.TransformationLayout
 import com.skydoves.transformationlayout.onTransformationEndContainer
@@ -39,6 +41,7 @@ class SearchActivity : BaseFontActivity() {
         }
     }
 
+    private var mainViewModel: MainViewModel? = null
     private var prevKeySearch: String = ""
     private val offlineKeyFragment = OfflineKeyFragment()
     private val onlineSearchFragment = OnlineSearchFragment()
@@ -55,6 +58,10 @@ class SearchActivity : BaseFontActivity() {
         logD("onCreate keySearch $prevKeySearch")
 
         setupViews()
+        setupViewModels()
+
+        etSearch.setText(prevKeySearch)
+        mainViewModel?.setKeySearchLiveData(keySearch = prevKeySearch)
     }
 
     private fun setupViews() {
@@ -83,10 +90,11 @@ class SearchActivity : BaseFontActivity() {
                 } else {
                     btClearText.visibility = View.VISIBLE
                 }
+                mainViewModel?.setKeySearchLiveData(keySearch = s?.toString() ?: "")
             }
 
         })
-        etSearch.setText(prevKeySearch)
+
         LUIUtil.setImeiActionSearch(editText = etSearch, actionSearch = Runnable {
             search()
         })
@@ -96,6 +104,29 @@ class SearchActivity : BaseFontActivity() {
         btSearch.setSafeOnClickListener {
             search()
         }
+    }
+
+    private fun setupViewModels() {
+        mainViewModel = getViewModel(MainViewModel::class.java)
+        mainViewModel?.let { mvm ->
+            mvm.eventLoading.observe(this, Observer { isLoading ->
+                logD("eventLoading isLoading $isLoading")
+                if (isLoading) {
+                    showDialogProgress()
+                } else {
+                    hideDialogProgress()
+                }
+            })
+            mvm.eventErrorMessage.observe(this, Observer { msg ->
+                logE("eventErrorMessage observe $msg")
+                msg?.let {
+                    showDialogError(errMsg = it, runnable = Runnable {
+                        //do nothing
+                    })
+                }
+            })
+        }
+
     }
 
     private fun search() {
