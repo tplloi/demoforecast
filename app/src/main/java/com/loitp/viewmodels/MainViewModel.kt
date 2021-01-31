@@ -80,7 +80,11 @@ class MainViewModel(
             val list = AppDatabase.instance?.openCageDataDao()?.getListResult(formatted = formatted)
 //            val list = AppDatabase.instance?.openCageDataDao()?.getListResult()
             logD(">>>>>>>>>>>>>getListOpenCageData list ${list?.size}" + BaseApplication.gson.toJson(list))
-            offlineListOpenCageDataLiveData.postValue(list?.subList(0, 5))
+            try {
+                offlineListOpenCageDataLiveData.postValue(list?.subList(0, 5))
+            } catch (e: Exception) {
+                offlineListOpenCageDataLiveData.postValue(list)
+            }
         }
     }
 }
