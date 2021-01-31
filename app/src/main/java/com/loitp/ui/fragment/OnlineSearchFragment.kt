@@ -13,6 +13,7 @@ import com.loitp.viewmodels.MainViewModel
 import com.restapi.restclient.RestClient2
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import kotlinx.android.synthetic.main.frm_online_search.*
 
 @LogTag("loitppOnlineSearchFragment")
 class OnlineSearchFragment : BaseFragment() {
@@ -50,6 +51,7 @@ class OnlineSearchFragment : BaseFragment() {
     private fun getCageData(keySearch: String) {
         logD("getCageData keySearch $keySearch")
         openCageDataService?.let { sv ->
+            indicatorView.smoothToShow()
             compositeDisposable.clear()
             compositeDisposable.add(
                     sv.getGeoCode(
@@ -65,8 +67,13 @@ class OnlineSearchFragment : BaseFragment() {
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe({ openCageData ->
                                 logD("loadData success " + BaseApplication.gson.toJson(openCageData))
+                                indicatorView.smoothToHide()
                             }, {
                                 logE("loadData error $it")
+                                indicatorView.smoothToHide()
+                                showDialogError(errMsg = getString(R.string.err_unknow_en), runnable = Runnable {
+                                    //do nothing
+                                })
                             }))
         }
     }
