@@ -12,6 +12,7 @@ import com.core.base.BaseFragment
 import com.loitp.R
 import com.loitp.adapter.DummyItemsAdapter
 import com.loitp.model.DummyItem
+import com.loitp.ui.activity.MainActivity
 import com.loitp.ui.activity.SearchActivity
 import com.loitp.viewmodels.MainViewModel
 import com.views.setSafeOnClickListener
@@ -116,6 +117,8 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     override fun onRefresh() {
-        loadData()
+        if (activity is MainActivity) {
+            (activity as MainActivity).requestLocation()
+        }
     }
 }

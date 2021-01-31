@@ -64,6 +64,7 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
     private var mLocationCallback: LocationCallback? = null
     private var mCurrentLocation: Location? = null
     private var currentItemId = R.id.navHome
+    private var isBottomSheetFragmentShowing = false
 
     override fun setLayoutResourceId(): Int {
         return R.layout.activity_main
@@ -116,7 +117,10 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
     public override fun onResume() {
         adView.resume()
         super.onResume()
+        requestLocation()
+    }
 
+    fun requestLocation() {
         // Resuming location updates depending on button state and
         // allowed permissions
         if (checkPermissions()) {
@@ -262,6 +266,10 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
     }
 
     private fun updateLocationUI() {
+        if (isBottomSheetFragmentShowing) {
+            logD("updateLocationUI return")
+            return
+        }
         mCurrentLocation?.let {
 
             var moreInformation = ""
@@ -273,6 +281,7 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
             }
 
             logD("updateLocationUI Lat: " + it.latitude + ", " + "Lng: " + it.longitude + ", more moreInformation: $moreInformation")
+            isBottomSheetFragmentShowing = true
             showBottomSheetOptionFragment(
                     isCancelableFragment = false,
                     isShowIvClose = true,
@@ -282,9 +291,14 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
                     textButton2 = getString(R.string.no),
                     onClickButton1 = {
                         //TODO yes
+                        isBottomSheetFragmentShowing = false
                     },
                     onClickButton2 = {
                         //TODO no
+                        isBottomSheetFragmentShowing = false
+                    },
+                    onDismiss = {
+                        isBottomSheetFragmentShowing = false
                     })
         }
     }
