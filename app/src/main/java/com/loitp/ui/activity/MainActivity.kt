@@ -24,6 +24,7 @@ import com.core.common.Constants
 import com.core.helper.adhelper.AdHelperActivity
 import com.core.utilities.*
 import com.data.EventBusData
+import com.google.ads.interactivemedia.v3.internal.it
 import com.google.android.gms.common.api.ApiException
 import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.*
@@ -313,19 +314,17 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
             logD("updateLocationUI return")
             return
         }
-        mCurrentLocation?.let {
+        mCurrentLocation?.let { loc ->
 
             var moreInformation = ""
-            var mState = ""
             LLocationUtil.getCityByLatLon(
-                    latitude = it.latitude,
-                    longitude = it.longitude)
+                    latitude = loc.latitude,
+                    longitude = loc.longitude)
             { address: String, city: String, state: String, country: String ->
                 moreInformation += "$address - $city - $state - $country"
-                mState = state
             }
 
-            logD("updateLocationUI Lat: " + it.latitude + ", " + "Lng: " + it.longitude + ", more moreInformation: $moreInformation")
+            logD("updateLocationUI Lat: " + loc.latitude + ", " + "Lng: " + loc.longitude + ", more moreInformation: $moreInformation")
 
             isBottomSheetFragmentShowing = true
             showBottomSheetOptionFragment(
@@ -336,12 +335,11 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
                     textButton1 = getString(R.string.yes),
                     textButton2 = getString(R.string.no),
                     onClickButton1 = {
-                        //TODO yes
                         isBottomSheetFragmentShowing = false
-                        homeFragment.updateCurrentLocation(keySearch = mState)
+                        homeFragment.updateCurrentLocation(keySearch = moreInformation, lat = loc.latitude, lon = loc.longitude)
                     },
                     onClickButton2 = {
-                        //TODO no
+                        showSnackBarInfor(getString(R.string.pls_input_ur_location))
                         isBottomSheetFragmentShowing = false
                     },
                     onDismiss = {

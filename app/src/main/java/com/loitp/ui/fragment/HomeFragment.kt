@@ -37,8 +37,6 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
         setupViews()
         setupViewModels()
-
-        loadData()
     }
 
     override fun setLayoutResourceId(): Int {
@@ -96,10 +94,6 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     }
 
-    private fun loadData() {
-        mainViewModel?.loadData()
-    }
-
     private fun showLoading() {
         swRefresh.isRefreshing = true
     }
@@ -115,10 +109,10 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         }
     }
 
-    fun updateCurrentLocation(keySearch: String) {
+    fun updateCurrentLocation(keySearch: String, lat: Double?, lon: Double?) {
+        logD("updateCurrentLocation keySearch $keySearch, lat $lat, lon $lon")
         btSearch.text = keySearch
-        mainViewModel?.setCurrentLocation(location = keySearch)
-        //TODO call api
+//        mainViewModel?.setCurrentLocation(location = keySearch)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -133,6 +127,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
                 } else {
                     if (result is Result) {
                         logD(">>>onActivityResult " + result.formatted)
+                        updateCurrentLocation(keySearch = result.formatted, lat = result.geometry?.lat, lon = result.geometry?.lng)
                     }
                 }
             }
