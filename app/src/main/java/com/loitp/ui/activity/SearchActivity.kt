@@ -4,6 +4,9 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
+import android.view.View
 import com.annotation.IsFullScreen
 import com.annotation.LogTag
 import com.core.base.BaseApplication
@@ -16,6 +19,7 @@ import com.rss.RssItem
 import com.skydoves.transformationlayout.TransformationCompat
 import com.skydoves.transformationlayout.TransformationLayout
 import com.skydoves.transformationlayout.onTransformationEndContainer
+import com.views.setSafeOnClickListener
 import kotlinx.android.synthetic.main.activity_layout_search.*
 
 @LogTag("DetailActivity")
@@ -53,6 +57,27 @@ class SearchActivity : BaseFontActivity() {
     }
 
     private fun setupViews() {
+        etSearch.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
 
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                if (s.isNullOrEmpty()) {
+                    btClearText.visibility = View.GONE
+                } else {
+                    btClearText.visibility = View.VISIBLE
+                }
+            }
+
+        })
+        btClearText.setSafeOnClickListener {
+            etSearch.setText("")
+        }
+        btSearch.setSafeOnClickListener {
+
+        }
     }
 }

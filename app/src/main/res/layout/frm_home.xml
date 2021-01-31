@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/margin_medium"
             android:background="@drawable/bg_search"
-            android:drawableEnd="@drawable/ic_baseline_search_24"
+            android:drawableStart="@drawable/ic_baseline_search_24"
             android:drawablePadding="@dimen/padding_medium"
             android:gravity="start|center_vertical"
             android:paddingStart="@dimen/padding_medium"

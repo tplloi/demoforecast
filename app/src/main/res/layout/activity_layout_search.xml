@@ -14,7 +14,18 @@
         android:background="@drawable/bg_search"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:padding="@dimen/padding_medium">
+        android:paddingStart="0dp"
+        android:paddingTop="@dimen/padding_medium"
+        android:paddingEnd="0dp"
+        android:paddingBottom="@dimen/padding_medium">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/btSearch"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_baseline_search_24"
+            app:tint="?attr/themeTextColor" />
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etSearch"
@@ -28,22 +39,15 @@
             tools:text="Saigon" />
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/btClearText"
+            android:layout_width="?attr/actionBarSize"
+            android:layout_height="?attr/actionBarSize"
             android:layout_marginStart="@dimen/margin_small"
-            android:layout_marginEnd="@dimen/margin_small"
             android:background="?selectableItemBackgroundBorderless"
             android:src="@drawable/ic_baseline_clear_24"
             android:visibility="gone"
             app:tint="?attr/themeTextColor"
             tools:visibility="visible" />
-
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:layout_width="@dimen/w_25"
-            android:layout_height="@dimen/w_25"
-            android:background="?selectableItemBackgroundBorderless"
-            android:src="@drawable/ic_baseline_search_24"
-            app:tint="?attr/themeTextColor" />
     </LinearLayout>
 
 </LinearLayout>
