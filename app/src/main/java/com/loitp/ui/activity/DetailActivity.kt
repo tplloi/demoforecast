@@ -11,7 +11,7 @@ import com.core.base.BaseFontActivity
 import com.core.common.Constants
 import com.core.utilities.LAppResource
 import com.loitp.R
-import com.rss.RssItem
+import com.loitp.model.DummyItem
 import com.skydoves.transformationlayout.TransformationCompat
 import com.skydoves.transformationlayout.TransformationLayout
 import com.skydoves.transformationlayout.onTransformationEndContainer
@@ -28,10 +28,10 @@ class DetailActivity : BaseFontActivity() {
         fun startActivity(
                 context: Context,
                 transformationLayout: TransformationLayout,
-                rssItem: RssItem
+                dummyItem: DummyItem
         ) {
             val intent = Intent(context, DetailActivity::class.java)
-            intent.putExtra(KEY_DATA, rssItem)
+            intent.putExtra(KEY_DATA, dummyItem)
             TransformationCompat.startActivity(transformationLayout, intent)
         }
     }

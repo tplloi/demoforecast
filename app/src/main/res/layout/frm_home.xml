@@ -21,7 +21,7 @@
                 style="@style/ScrollVertical"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                tools:listitem="@layout/row_rss_item" />
+                tools:listitem="@layout/view_row_dummy_item" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvNoData"
