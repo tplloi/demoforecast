@@ -19,6 +19,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
 import androidx.lifecycle.Observer
 import com.annotation.LogTag
+import com.core.base.BaseApplication
 import com.core.base.BaseFontActivity
 import com.core.common.Constants
 import com.core.helper.adhelper.AdHelperActivity
@@ -37,6 +38,7 @@ import com.karumi.dexter.listener.PermissionRequest
 import com.karumi.dexter.listener.single.PermissionListener
 import com.loitp.BuildConfig
 import com.loitp.R
+import com.loitp.model.opencagedata.Result
 import com.loitp.ui.fragment.HomeFragment
 import com.loitp.ui.fragment.SettingFragment
 import com.loitp.util.LLocationUtil
@@ -129,9 +131,6 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
                         //do nothing
                     })
                 }
-            })
-            mvm.currentLocationLiveData.observe(this, Observer { location ->
-                logD("currentLocationLiveData observe location $location")
             })
         }
 
@@ -425,12 +424,32 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
         super.onActivityResult(requestCode, resultCode, data)
 
         when (requestCode) {
-            REQUEST_CHECK_SETTINGS -> when (resultCode) {
-                Activity.RESULT_OK -> {
-                    logE("User agreed to make required location settings changes.")
+            REQUEST_CHECK_SETTINGS -> {
+                when (resultCode) {
+                    Activity.RESULT_OK -> {
+                        logE("User agreed to make required location settings changes.")
+                    }
+                    Activity.RESULT_CANCELED -> {
+                        logE("User chose not to make required location settings changes.")
+                    }
                 }
-                Activity.RESULT_CANCELED -> {
-                    logE("User chose not to make required location settings changes.")
+            }
+            HomeFragment.REQUEST_CODE -> {
+                if (resultCode == Activity.RESULT_OK) {
+                    val result = data?.getSerializableExtra(SearchActivity.KEY_RESULT)
+                    logD("onActivityResult result " + BaseApplication.gson.toJson(result))
+                    if (result == null) {
+                        //do nothing
+                    } else {
+                        if (result is Result) {
+                            logD(">>>onActivityResult " + result.formatted)
+                            homeFragment.updateCurrentLocation(
+                                    keySearch = result.formatted,
+                                    lat = result.geometry?.lat,
+                                    lon = result.geometry?.lng
+                            )
+                        }
+                    }
                 }
             }
         }

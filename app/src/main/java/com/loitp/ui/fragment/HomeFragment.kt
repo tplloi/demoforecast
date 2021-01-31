@@ -112,25 +112,6 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     fun updateCurrentLocation(keySearch: String, lat: Double?, lon: Double?) {
         logD("updateCurrentLocation keySearch $keySearch, lat $lat, lon $lon")
         btSearch.text = keySearch
-//        mainViewModel?.setCurrentLocation(location = keySearch)
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (resultCode == Activity.RESULT_OK) {
-            if (requestCode == REQUEST_CODE) {
-                val result = data?.getSerializableExtra(SearchActivity.KEY_RESULT)
-                logD("onActivityResult result " + BaseApplication.gson.toJson(result))
-                if (result == null) {
-                    //do nothing
-                } else {
-                    if (result is Result) {
-                        logD(">>>onActivityResult " + result.formatted)
-                        updateCurrentLocation(keySearch = result.formatted, lat = result.geometry?.lat, lon = result.geometry?.lng)
-                    }
-                }
-            }
-        }
+        mainViewModel?.setCurrentLocation(location = keySearch)
     }
 }
