@@ -10,6 +10,7 @@ import com.google.gson.annotations.SerializedName
 import com.loitp.db.converter.BoundsConverter
 import com.loitp.db.converter.ComponentsConverter
 import com.loitp.db.converter.GeometryConverter
+import java.io.Serializable
 
 @Keep
 @Entity(tableName = "Result")
@@ -45,4 +46,4 @@ data class Result(
         @SerializedName("geometry")
         @Expose
         var geometry: Geometry? = null
-)
+) : Serializable

@@ -1,5 +1,6 @@
 package com.loitp.ui.activity
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -29,17 +30,8 @@ import kotlinx.android.synthetic.main.activity_layout_search.*
 class SearchActivity : BaseFontActivity() {
 
     companion object {
-        private const val KEY_SEARCH = "KEY_SEARCH"
-
-        fun startActivity(
-                context: Context,
-                transformationLayout: TransformationLayout,
-                keySearch: String
-        ) {
-            val intent = Intent(context, SearchActivity::class.java)
-            intent.putExtra(KEY_SEARCH, keySearch)
-            TransformationCompat.startActivity(transformationLayout, intent)
-        }
+        const val KEY_SEARCH = "KEY_SEARCH"
+        const val KEY_RESULT = "KEY_RESULT"
     }
 
     private var mainViewModel: MainViewModel? = null
@@ -63,6 +55,10 @@ class SearchActivity : BaseFontActivity() {
 
         etSearch.setText(prevKeySearch)
         mainViewModel?.setKeySearchLiveData(keySearch = prevKeySearch)
+    }
+
+    override fun onBackPressed() {
+        initLocation(result = null)
     }
 
     private fun setupViews() {
@@ -139,7 +135,13 @@ class SearchActivity : BaseFontActivity() {
         mainViewModel?.setKeySearchLiveData(keySearch = keyword)
     }
 
-    fun initLocation(result: Result) {
-        logD("initLocation result " + result.formatted)
+    fun initLocation(result: Result?) {
+        logD("initLocation result " + result?.formatted)
+        val returnIntent = Intent()
+        result?.let {
+            returnIntent.putExtra(KEY_RESULT, it)
+        }
+        setResult(Activity.RESULT_OK, returnIntent)
+        finish()
     }
 }

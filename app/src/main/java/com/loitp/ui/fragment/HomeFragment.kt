@@ -1,5 +1,7 @@
 package com.loitp.ui.fragment
 
+import android.app.Activity
+import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.View
@@ -7,17 +9,24 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.annotation.LogTag
+import com.core.base.BaseApplication
 import com.core.base.BaseFragment
 import com.loitp.R
 import com.loitp.adapter.OpenCageDataResultAdapter
+import com.loitp.model.opencagedata.Result
 import com.loitp.ui.activity.MainActivity
 import com.loitp.ui.activity.SearchActivity
 import com.loitp.viewmodels.MainViewModel
+import com.skydoves.transformationlayout.TransformationCompat
 import com.views.setSafeOnClickListener
 import kotlinx.android.synthetic.main.frm_home.*
 
 @LogTag("HomeFragment")
 class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
+    companion object {
+        const val REQUEST_CODE = 1234
+    }
+
     private var mainViewModel: MainViewModel? = null
     private val concatAdapter = ConcatAdapter()
     private var openCageDataResultAdapter: OpenCageDataResultAdapter? = null
@@ -59,7 +68,11 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
             context?.let { c ->
                 val now = SystemClock.elapsedRealtime()
                 if (now - previousTimeSearch >= layoutItemSearchTransformation.duration) {
-                    SearchActivity.startActivity(context = c, transformationLayout = layoutItemSearchTransformation, keySearch = btSearch.text.toString())
+
+                    val intent = Intent(context, SearchActivity::class.java)
+                    intent.putExtra(SearchActivity.KEY_SEARCH, btSearch.text.toString())
+                    TransformationCompat.startActivityForResult(layoutItemSearchTransformation, intent, REQUEST_CODE)
+
                     previousTimeSearch = now
                 }
             }
@@ -106,5 +119,23 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         btSearch.text = keySearch
         mainViewModel?.setCurrentLocation(location = keySearch)
         //TODO call api
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == REQUEST_CODE) {
+                val result = data?.getSerializableExtra(SearchActivity.KEY_RESULT)
+                logD("onActivityResult result " + BaseApplication.gson.toJson(result))
+                if (result == null) {
+                    //do nothing
+                } else {
+                    if (result is Result) {
+                        logD(">>>onActivityResult " + result.formatted)
+                    }
+                }
+            }
+        }
     }
 }

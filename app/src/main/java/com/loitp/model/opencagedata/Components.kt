@@ -3,6 +3,7 @@ package com.loitp.model.opencagedata
 import androidx.annotation.Keep
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import java.io.Serializable
 
 @Keep
 data class Components(
@@ -93,4 +94,4 @@ data class Components(
         @SerializedName("village")
         @Expose
         val village: String = ""
-)
+) : Serializable
