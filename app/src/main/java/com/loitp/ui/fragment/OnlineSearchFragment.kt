@@ -1,6 +1,7 @@
 package com.loitp.ui.fragment
 
 import android.os.Bundle
+import android.os.SystemClock
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ConcatAdapter
@@ -40,14 +41,8 @@ class OnlineSearchFragment : BaseFragment() {
     }
 
     private fun setupViews() {
-        openCageDataResultAdapter = OpenCageDataResultAdapter { dummyItems, layoutItemRssTransformation ->
-//            context?.let { c ->
-//                val now = SystemClock.elapsedRealtime()
-//                if (now - previousTimeSearch >= layoutItemRssTransformation.duration) {
-//                    DetailActivity.startActivity(context = c, transformationLayout = layoutItemRssTransformation, dummyItem = dummyItems)
-//                    previousTimeSearch = now
-//                }
-//            }
+        openCageDataResultAdapter = OpenCageDataResultAdapter { result ->
+            logD("OpenCageDataResultAdapter result " + result.formatted + " - " + result.geometry?.lat + " - " + result.geometry?.lng)
         }
         openCageDataResultAdapter?.let {
             concatAdapter.addAdapter(it)

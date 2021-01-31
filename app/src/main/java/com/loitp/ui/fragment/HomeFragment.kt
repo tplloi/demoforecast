@@ -37,7 +37,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun setupViews() {
-        openCageDataResultAdapter = OpenCageDataResultAdapter { dummyItems, layoutItemRssTransformation ->
+        openCageDataResultAdapter = OpenCageDataResultAdapter { dummyItems ->
 //            context?.let { c ->
 //                val now = SystemClock.elapsedRealtime()
 //                if (now - previousTimeSearch >= layoutItemRssTransformation.duration) {

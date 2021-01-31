@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/themeBackgroundColorMedium"
+    android:background="?attr/themeBackgroundColor"
     android:orientation="vertical">
 
     <com.wang.avi.AVLoadingIndicatorView
@@ -23,5 +23,5 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:itemCount="69"
-        tools:listitem="@layout/view_row_dummy_item" />
+        tools:listitem="@layout/view_row_open_cage_data" />
 </LinearLayout>

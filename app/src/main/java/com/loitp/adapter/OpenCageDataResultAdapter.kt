@@ -9,12 +9,12 @@ import com.core.adapter.BaseAdapter
 import com.loitp.R
 import com.loitp.model.opencagedata.Result
 import com.skydoves.transformationlayout.TransformationLayout
-import kotlinx.android.synthetic.main.view_row_dummy_item.view.*
+import kotlinx.android.synthetic.main.view_row_open_cage_data.view.*
 import java.util.*
 
 @LogTag("OpenCageDataResultAdapter")
 class OpenCageDataResultAdapter(
-        private val onClick: ((Result, TransformationLayout) -> Unit)? = null
+        private val onClick: ((Result) -> Unit)? = null
 ) : BaseAdapter() {
 
     private val listResult = ArrayList<Result>()
@@ -27,7 +27,7 @@ class OpenCageDataResultAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultViewHolder {
         val itemView =
-                LayoutInflater.from(parent.context).inflate(R.layout.view_row_dummy_item, parent, false)
+                LayoutInflater.from(parent.context).inflate(R.layout.view_row_open_cage_data, parent, false)
         return ResultViewHolder(itemView)
     }
 
@@ -46,7 +46,7 @@ class OpenCageDataResultAdapter(
         fun bind(result: Result) {
             itemView.tvTitle.text = result.formatted
             itemView.setOnClickListener {
-                onClick?.invoke(result, itemView.layoutItemRssTransformation)
+                onClick?.invoke(result)
             }
         }
     }
