@@ -71,22 +71,6 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     private fun setupViewModels() {
         mainViewModel = getViewModel(MainViewModel::class.java)
         mainViewModel?.let { mvm ->
-            mvm.eventLoading.observe(viewLifecycleOwner, Observer { isLoading ->
-                logD("eventLoading isLoading $isLoading")
-                if (isLoading) {
-                    showLoading()
-                } else {
-                    hideLoading()
-                }
-            })
-            mvm.eventErrorMessage.observe(viewLifecycleOwner, Observer { msg ->
-                logE("eventErrorMessage observe $msg")
-                msg?.let {
-                    recyclerView.visibility = View.GONE
-                    tvNoData.visibility = View.VISIBLE
-                }
-
-            })
             mvm.listDummyItemLiveData.observe(viewLifecycleOwner, Observer { listDummyItem ->
 //                logD("<<<listRssItemLiveData " + BaseApplication.gson.toJson(listRssItem))
                 onDummyItemLoaded(listDummyItem = listDummyItem)
@@ -125,6 +109,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     fun updateCurrentLocation(keySearch: String) {
         btSearch.text = keySearch
+        mainViewModel?.setCurrentLocation(location = keySearch)
         //TODO call api
     }
 }

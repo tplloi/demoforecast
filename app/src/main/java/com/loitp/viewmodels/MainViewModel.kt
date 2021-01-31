@@ -17,7 +17,12 @@ import retrofit2.Retrofit
 @LogTag("MainViewModel")
 class MainViewModel : BaseViewModel() {
 
+    val currentLocationLiveData: MutableLiveData<String> = MutableLiveData()
     val listDummyItemLiveData: MutableLiveData<List<DummyItem>> = MutableLiveData()
+
+    fun setCurrentLocation(location: String) {
+        currentLocationLiveData.postValue(location)
+    }
 
     fun loadData() {
         ioScope.launch {

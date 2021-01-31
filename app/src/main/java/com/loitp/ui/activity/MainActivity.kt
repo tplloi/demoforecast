@@ -17,6 +17,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.app.ActivityCompat
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.Observer
 import com.annotation.LogTag
 import com.core.base.BaseFontActivity
 import com.core.common.Constants
@@ -38,8 +39,10 @@ import com.loitp.R
 import com.loitp.ui.fragment.HomeFragment
 import com.loitp.ui.fragment.SettingFragment
 import com.loitp.util.LLocationUtil
+import com.loitp.viewmodels.MainViewModel
 import com.skydoves.transformationlayout.onTransformationStartContainer
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.frm_home.*
 import kotlinx.android.synthetic.main.view_drawer_end.*
 import kotlinx.android.synthetic.main.view_drawer_main.*
 
@@ -67,6 +70,7 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
     private var isBottomSheetFragmentShowing = false
     private var homeFragment = HomeFragment()
     private var settingFragment = SettingFragment()
+    private var mainViewModel: MainViewModel? = null
 
     override fun setLayoutResourceId(): Int {
         return R.layout.activity_main
@@ -78,6 +82,7 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
 
         initLocation()
         setupViews()
+        setupViewModels()
     }
 
     private fun setupViews() {
@@ -105,6 +110,32 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
         switchHomeScreen()
     }
 
+    private fun setupViewModels() {
+        mainViewModel = getViewModel(MainViewModel::class.java)
+        mainViewModel?.let { mvm ->
+            mvm.eventLoading.observe(this, Observer { isLoading ->
+                logD("eventLoading isLoading $isLoading")
+                if (isLoading) {
+                    showDialogProgress()
+                } else {
+                    hideDialogProgress()
+                }
+            })
+            mvm.eventErrorMessage.observe(this, Observer { msg ->
+                logE("eventErrorMessage observe $msg")
+                msg?.let {
+                    showDialogError(errMsg = it, runnable = Runnable {
+                        //do nothing
+                    })
+                }
+            })
+            mvm.currentLocationLiveData.observe(this, Observer { location ->
+                logE("currentLocationLiveData observe location $location")
+            })
+        }
+
+    }
+
     private fun switchHomeScreen() {
         navViewStart.menu.performIdentifierAction(R.id.navHome, 0)
         navViewStart.menu.findItem(R.id.navHome).isChecked = true
@@ -119,7 +150,12 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
     public override fun onResume() {
         adView.resume()
         super.onResume()
-        requestLocation()
+
+        val currentLocation = mainViewModel?.currentLocationLiveData?.value
+        logD("onResume currentLocation $currentLocation")
+        if (currentLocation.isNullOrEmpty()) {
+            requestLocation()
+        }
     }
 
     fun requestLocation() {
