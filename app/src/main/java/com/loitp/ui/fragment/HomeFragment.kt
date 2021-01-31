@@ -1,6 +1,5 @@
 package com.loitp.ui.fragment
 
-import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.os.SystemClock
@@ -9,11 +8,9 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.annotation.LogTag
-import com.core.base.BaseApplication
 import com.core.base.BaseFragment
 import com.loitp.R
 import com.loitp.adapter.OpenCageDataResultAdapter
-import com.loitp.model.opencagedata.Result
 import com.loitp.ui.activity.MainActivity
 import com.loitp.ui.activity.SearchActivity
 import com.loitp.viewmodels.MainViewModel
@@ -21,7 +18,7 @@ import com.skydoves.transformationlayout.TransformationCompat
 import com.views.setSafeOnClickListener
 import kotlinx.android.synthetic.main.frm_home.*
 
-@LogTag("HomeFragment")
+@LogTag("loitppHomeFragment")
 class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     companion object {
         const val REQUEST_CODE = 1234
@@ -113,5 +110,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         logD("updateCurrentLocation keySearch $keySearch, lat $lat, lon $lon")
         btSearch.text = keySearch
         mainViewModel?.setCurrentLocation(location = keySearch)
+        logD(">>>>>>>>>>>>>>>>>>>>>>>>>updateCurrentLocation")
+        //TODO call api
     }
 }
