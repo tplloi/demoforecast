@@ -12,8 +12,9 @@ import com.core.base.BaseFragment
 import com.loitp.R
 import com.loitp.adapter.DummyItemsAdapter
 import com.loitp.model.DummyItem
-import com.loitp.ui.activity.DetailActivity
+import com.loitp.ui.activity.SearchActivity
 import com.loitp.viewmodels.MainViewModel
+import com.views.setSafeOnClickListener
 import kotlinx.android.synthetic.main.frm_home.*
 
 @LogTag("HomeFragment")
@@ -21,7 +22,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     private var mainViewModel: MainViewModel? = null
     private val concatAdapter = ConcatAdapter()
     private var dummyItemsAdapter: DummyItemsAdapter? = null
-    private var previousTime = SystemClock.elapsedRealtime()
+    private var previousTimeSearch = SystemClock.elapsedRealtime()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -38,13 +39,13 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
     private fun setupViews() {
         dummyItemsAdapter = DummyItemsAdapter { dummyItems, layoutItemRssTransformation ->
-            context?.let { c ->
-                val now = SystemClock.elapsedRealtime()
-                if (now - previousTime >= layoutItemRssTransformation.duration) {
-                    DetailActivity.startActivity(context = c, transformationLayout = layoutItemRssTransformation, dummyItem = dummyItems)
-                    previousTime = now
-                }
-            }
+//            context?.let { c ->
+//                val now = SystemClock.elapsedRealtime()
+//                if (now - previousTimeSearch >= layoutItemRssTransformation.duration) {
+//                    DetailActivity.startActivity(context = c, transformationLayout = layoutItemRssTransformation, dummyItem = dummyItems)
+//                    previousTimeSearch = now
+//                }
+//            }
         }
         dummyItemsAdapter?.let {
             concatAdapter.addAdapter(it)
@@ -54,6 +55,16 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         recyclerView.layoutManager = gridLayoutManager
         recyclerView.adapter = concatAdapter
         swRefresh.setOnRefreshListener(this)
+
+        btSearch.setSafeOnClickListener {
+            context?.let { c ->
+                val now = SystemClock.elapsedRealtime()
+                if (now - previousTimeSearch >= layoutItemSearchTransformation.duration) {
+                    SearchActivity.startActivity(context = c, transformationLayout = layoutItemSearchTransformation, keySearch = btSearch.text.toString())
+                    previousTimeSearch = now
+                }
+            }
+        }
     }
 
     private fun setupViewModels() {
