@@ -41,16 +41,16 @@ class OnlineSearchFragment : BaseFragment() {
         mainViewModel?.let { mvm ->
             mvm.keySearchLiveData.observe(viewLifecycleOwner, Observer { keySearch ->
                 logD("keySearchLiveData observe keySearch $keySearch")
-
-                getCageData()
+                getCageData(keySearch = keySearch)
             })
         }
 
     }
 
-    private fun getCageData() {
-        logD("getCageData")
+    private fun getCageData(keySearch: String) {
+        logD("getCageData keySearch $keySearch")
         openCageDataService?.let { sv ->
+            compositeDisposable.clear()
             compositeDisposable.add(
                     sv.getGeoCode(
                             pretty = 1,
@@ -58,8 +58,8 @@ class OnlineSearchFragment : BaseFragment() {
                             noDedUpe = 1,
                             noRecord = 1,
                             limit = 1,
-                            key = "64b4adc491c8476e93772284769a4005",
-                            q = "saigon"
+                            key = BuildConfig.KEY_OPEN_CAGE_DATA,
+                            q = keySearch
                     )
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
