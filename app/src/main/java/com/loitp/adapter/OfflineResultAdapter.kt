@@ -8,11 +8,11 @@ import com.annotation.LogTag
 import com.core.adapter.BaseAdapter
 import com.loitp.R
 import com.loitp.model.opencagedata.Result
-import kotlinx.android.synthetic.main.view_row_open_cage_data.view.*
+import kotlinx.android.synthetic.main.view_row_offline_result.view.*
 import java.util.*
 
-@LogTag("OpenCageDataResultAdapter")
-class OpenCageDataResultAdapter(
+@LogTag("OfflineResultAdapter")
+class OfflineResultAdapter(
         private val onClick: ((Result) -> Unit)? = null
 ) : BaseAdapter() {
 
@@ -26,7 +26,7 @@ class OpenCageDataResultAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ResultViewHolder {
         val itemView =
-                LayoutInflater.from(parent.context).inflate(R.layout.view_row_open_cage_data, parent, false)
+                LayoutInflater.from(parent.context).inflate(R.layout.view_row_offline_result, parent, false)
         return ResultViewHolder(itemView)
     }
 

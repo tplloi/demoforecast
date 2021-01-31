@@ -41,5 +41,6 @@
     <string name="no">No</string>
     <string name="input_your_city">Input your city</string>
     <string name="suggestion">Suggestion</string>
+    <string name="choose_your_location">Choose your location</string>
 
 </resources>

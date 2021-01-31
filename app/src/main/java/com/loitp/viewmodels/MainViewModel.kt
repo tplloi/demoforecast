@@ -23,7 +23,7 @@ class MainViewModel(
     val keySearchLiveData: MutableLiveData<String> = MutableLiveData()
     val keySearchChangeLiveData: MutableLiveData<String> = MutableLiveData()
 
-    val pageActionLiveData: ActionLiveData<ActionData<ArrayList<GirlPage>>> = ActionLiveData()
+    val offlineListOpenCageDataLiveData: MutableLiveData<List<Result>> = MutableLiveData()
 
     fun setCurrentLocation(location: String) {
         currentLocationLiveData.postValue(location)
@@ -71,17 +71,16 @@ class MainViewModel(
         ioScope.launch {
             val id = AppDatabase.instance?.openCageDataDao()?.insert(t = result)
             logD("save id $id")
-
-            getListOpenCageData("")
         }
     }
 
     fun getListOpenCageData(formatted: String) {
         logD("getListOpenCageData formatted $formatted")
         ioScope.launch {
-//            AppDatabase.instance?.openCageDataDao()?.getListResult(formatted = formatted)
-            val list = AppDatabase.instance?.openCageDataDao()?.getListResult()
-            logD("getListOpenCageData list " + BaseApplication.gson.toJson(list))
+            val list = AppDatabase.instance?.openCageDataDao()?.getListResult(formatted = formatted)
+//            val list = AppDatabase.instance?.openCageDataDao()?.getListResult()
+            logD(">>>>>>>>>>>>>getListOpenCageData list ${list?.size}" + BaseApplication.gson.toJson(list))
+            offlineListOpenCageDataLiveData.postValue(list?.subList(0, 5))
         }
     }
 }

@@ -63,10 +63,9 @@ class OnlineSearchFragment : BaseFragment() {
             })
             mvm.keySearchChangeLiveData.observe(viewLifecycleOwner, Observer { keySearch ->
                 logD("keySearchChangeLiveData observe keySearch $keySearch")
-                if (keySearch.isNotEmpty()) {
-                    openCageDataResultAdapter?.setItems(emptyList())
-                    indicatorView.smoothToHide()
-                }
+                openCageDataResultAdapter?.setItems(emptyList())
+                indicatorView.smoothToHide()
+                tvLabelChooseLocation.visibility = View.GONE
             })
         }
 
@@ -76,6 +75,7 @@ class OnlineSearchFragment : BaseFragment() {
         logD("getCageData keySearch $keySearch")
         openCageDataService?.let { sv ->
             indicatorView.smoothToShow()
+            tvLabelChooseLocation.visibility = View.GONE
             openCageDataResultAdapter?.setItems(emptyList())
             compositeDisposable.clear()
             compositeDisposable.add(
@@ -94,10 +94,12 @@ class OnlineSearchFragment : BaseFragment() {
 //                                logD("loadData success " + BaseApplication.gson.toJson(openCageData))
                                 openCageDataResultAdapter?.setItems(openCageData.results)
                                 indicatorView.smoothToHide()
+                                tvLabelChooseLocation.visibility = View.VISIBLE
                             }, {
                                 logE("loadData error $it")
                                 indicatorView.smoothToHide()
-                                showDialogError(errMsg = getString(R.string.err_unknow_en), runnable = Runnable {
+                                tvLabelChooseLocation.visibility = View.GONE
+                                showDialogError(errMsg = getString(R.string.no_data_eng), runnable = Runnable {
                                     //do nothing
                                 })
                             }))
