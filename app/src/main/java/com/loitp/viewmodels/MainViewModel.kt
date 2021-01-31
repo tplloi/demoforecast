@@ -16,6 +16,7 @@ class MainViewModel(
     val currentLocationLiveData: MutableLiveData<String> = MutableLiveData()
 //    val listDummyItemLiveData: MutableLiveData<List<DummyItem>> = MutableLiveData()
     val keySearchLiveData: MutableLiveData<String> = MutableLiveData()
+    val keySearchChangeLiveData: MutableLiveData<String> = MutableLiveData()
 
     val pageActionLiveData: ActionLiveData<ActionData<ArrayList<GirlPage>>> = ActionLiveData()
 
@@ -25,6 +26,10 @@ class MainViewModel(
 
     fun setKeySearchLiveData(keySearch: String) {
         keySearchLiveData.postValue(keySearch)
+    }
+
+    fun setKeySearchChangeLiveData(keySearch: String) {
+        keySearchChangeLiveData.postValue(keySearch)
     }
 
     fun loadData() {

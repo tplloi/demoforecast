@@ -34,7 +34,9 @@ class OfflineKeyFragment : BaseFragment() {
             mvm.keySearchLiveData.observe(viewLifecycleOwner, Observer { keySearch ->
                 logD("keySearchLiveData observe keySearch $keySearch")
             })
-
+            mvm.keySearchChangeLiveData.observe(viewLifecycleOwner, Observer { keySearch ->
+                logD("keySearchChangeLiveData observe keySearch $keySearch")
+            })
         }
 
     }

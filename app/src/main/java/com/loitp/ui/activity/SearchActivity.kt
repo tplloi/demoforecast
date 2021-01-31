@@ -87,10 +87,10 @@ class SearchActivity : BaseFontActivity() {
             override fun afterTextChanged(s: Editable?) {
                 if (s.isNullOrEmpty()) {
                     btClearText.visibility = View.GONE
-                    mainViewModel?.setKeySearchLiveData(keySearch = "")
                 } else {
                     btClearText.visibility = View.VISIBLE
                 }
+                mainViewModel?.setKeySearchChangeLiveData(keySearch = s?.toString() ?: "")
             }
 
         })

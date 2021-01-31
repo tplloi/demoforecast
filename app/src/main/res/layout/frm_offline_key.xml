@@ -6,5 +6,18 @@
     android:orientation="vertical"
     android:padding="@dimen/padding_medium">
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/suggestion"
+        android:textColor="?attr/themeTextColor"
+        android:textSize="@dimen/text_large"
+        android:textStyle="bold" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium" />
 
 </LinearLayout>

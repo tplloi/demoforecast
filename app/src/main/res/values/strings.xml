@@ -40,5 +40,6 @@
     <string name="pls_input_your_location">Please input your location...</string>
     <string name="no">No</string>
     <string name="input_your_city">Input your city</string>
+    <string name="suggestion">Suggestion</string>
 
 </resources>

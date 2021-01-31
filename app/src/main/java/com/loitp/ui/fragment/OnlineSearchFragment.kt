@@ -1,13 +1,11 @@
 package com.loitp.ui.fragment
 
 import android.os.Bundle
-import android.os.SystemClock
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import com.annotation.LogTag
-import com.core.base.BaseApplication
 import com.core.base.BaseFragment
 import com.loitp.BuildConfig
 import com.loitp.R
@@ -58,12 +56,15 @@ class OnlineSearchFragment : BaseFragment() {
         mainViewModel?.let { mvm ->
             mvm.keySearchLiveData.observe(viewLifecycleOwner, Observer { keySearch ->
                 logD("keySearchLiveData observe keySearch $keySearch")
-
-                if (keySearch.isNullOrEmpty()) {
+                if (keySearch.isNotEmpty()) {
+                    getCageData(keySearch = keySearch)
+                }
+            })
+            mvm.keySearchChangeLiveData.observe(viewLifecycleOwner, Observer { keySearch ->
+                logD("keySearchChangeLiveData observe keySearch $keySearch")
+                if (keySearch.isNotEmpty()) {
                     openCageDataResultAdapter?.setItems(emptyList())
                     indicatorView.smoothToHide()
-                } else {
-                    getCageData(keySearch = keySearch)
                 }
             })
         }
