@@ -37,6 +37,7 @@ import com.loitp.BuildConfig
 import com.loitp.R
 import com.loitp.ui.fragment.HomeFragment
 import com.loitp.ui.fragment.SettingFragment
+import com.loitp.util.LLocationUtil
 import com.skydoves.transformationlayout.onTransformationStartContainer
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.view_drawer_end.*
@@ -263,12 +264,15 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
     private fun updateLocationUI() {
         mCurrentLocation?.let {
 
-            var moreInfor = ""
-//            LLocationUtil.getCityByLatLon(it.latitude, it.longitude) { address: String, city: String, state: String, country: String ->
-//                moreInfor += "$address - $city - $state - $country"
-//            }
+            var moreInformation = ""
+            LLocationUtil.getCityByLatLon(
+                    latitude = it.latitude,
+                    longitude = it.longitude)
+            { address: String, city: String, state: String, country: String ->
+                moreInformation += "$address - $city - $state - $country"
+            }
 
-            logD("updateLocationUI Lat: " + it.latitude + ", " + "Lng: " + it.longitude + ", more infor: $moreInfor")
+            logD("updateLocationUI Lat: " + it.latitude + ", " + "Lng: " + it.longitude + ", more moreInformation: $moreInformation")
         }
     }
 

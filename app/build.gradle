@@ -103,4 +103,3 @@ dependencies {
     api 'com.infideap.drawerbehavior:drawer-behavior:1.0.1'
 }
 //apply plugin: 'com.google.gms.google-services'
-//com.google.gms.googleservices.GoogleServicesPlugin.config.disableVersionCheck = true
