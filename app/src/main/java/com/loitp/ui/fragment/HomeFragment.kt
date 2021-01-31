@@ -8,15 +8,22 @@ import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.annotation.LogTag
+import com.core.base.BaseApplication
 import com.core.base.BaseFragment
+import com.loitp.BuildConfig
 import com.loitp.R
 import com.loitp.adapter.OpenCageDataResultAdapter
+import com.loitp.service.OpenWeatherService
 import com.loitp.ui.activity.MainActivity
 import com.loitp.ui.activity.SearchActivity
 import com.loitp.viewmodels.MainViewModel
+import com.restapi.restclient.RestClient2
 import com.skydoves.transformationlayout.TransformationCompat
 import com.views.setSafeOnClickListener
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.frm_home.*
+import kotlinx.android.synthetic.main.frm_home.recyclerView
 
 @LogTag("loitppHomeFragment")
 class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
@@ -24,6 +31,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         const val REQUEST_CODE = 1234
     }
 
+    private var openWeatherService: OpenWeatherService? = null
     private var mainViewModel: MainViewModel? = null
     private val concatAdapter = ConcatAdapter()
     private var openCageDataResultAdapter: OpenCageDataResultAdapter? = null
@@ -34,6 +42,14 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
         setupViews()
         setupViewModels()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        logD("onResume")
+
+        RestClient2.init(BuildConfig.BASE_URL_OPEN_WEATHER)
+        openWeatherService = RestClient2.createService(OpenWeatherService::class.java)
     }
 
     override fun setLayoutResourceId(): Int {
@@ -111,6 +127,26 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
         btSearch.text = keySearch
         mainViewModel?.setCurrentLocation(location = keySearch)
         logD(">>>>>>>>>>>>>>>>>>>>>>>>>updateCurrentLocation")
-        //TODO call api
+
+        openWeatherService?.let { sv ->
+            compositeDisposable.clear()
+            compositeDisposable.add(
+                    sv.getWeather(
+                            lat = lat ?: 0.0,
+                            lon = lon ?: 0.0,
+                            exclude = "hourly,current,minutely,alerts",
+                            appid = "2ed34880c948e7e9434e5f951f96e18b"
+                    )
+                            .subscribeOn(Schedulers.io())
+                            .observeOn(AndroidSchedulers.mainThread())
+                            .subscribe({ openCageData ->
+                                logD("<<< success " + BaseApplication.gson.toJson(openCageData))
+                            }, {
+                                logE("<<< error $it")
+                                showDialogError(errMsg = getString(R.string.no_data_eng), runnable = Runnable {
+                                    //do nothing
+                                })
+                            }))
+        }
     }
 }

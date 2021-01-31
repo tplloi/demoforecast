@@ -73,6 +73,7 @@ android {
             buildConfigField("String", "FLAVOR_buildEnv", '"dev"')
             buildConfigField("String", "BASE_URL_OPEN_CAGE_DATA", '"https://api.opencagedata.com/geocode/v1/"')
             buildConfigField("String", "KEY_OPEN_CAGE_DATA", '"64b4adc491c8476e93772284769a4005"')
+            buildConfigField("String", "BASE_URL_OPEN_WEATHER", '"https://api.openweathermap.org/data/2.5/"')
         }
 
         stg {
@@ -82,6 +83,7 @@ android {
             buildConfigField("String", "FLAVOR_buildEnv", '"stg"')
             buildConfigField("String", "BASE_URL_OPEN_CAGE_DATA", '"https://api.opencagedata.com/geocode/v1/"')
             buildConfigField("String", "KEY_OPEN_CAGE_DATA", '"64b4adc491c8476e93772284769a4005"')
+            buildConfigField("String", "BASE_URL_OPEN_WEATHER", '"https://api.openweathermap.org/data/2.5/"')
         }
 
         production {
@@ -91,6 +93,7 @@ android {
             buildConfigField("String", "FLAVOR_buildEnv", '"prod"')
             buildConfigField("String", "BASE_URL_OPEN_CAGE_DATA", '"https://api.opencagedata.com/geocode/v1/"')
             buildConfigField("String", "KEY_OPEN_CAGE_DATA", '"64b4adc491c8476e93772284769a4005"')
+            buildConfigField("String", "BASE_URL_OPEN_WEATHER", '"https://api.openweathermap.org/data/2.5/"')
         }
 
     }
