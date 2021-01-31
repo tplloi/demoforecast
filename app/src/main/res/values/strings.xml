@@ -37,7 +37,7 @@
     <string name="github">Github</string>
     <string name="dark_mode">Dark mode</string>
     <string name="setting_success">Success</string>
-    <string name="pls_input_your_location">Please input your location...</string>
+    <string name="pls_input_your_location">Please select your location…</string>
     <string name="no">No</string>
     <string name="input_your_city">Input your city</string>
     <string name="suggestion">Suggestion</string>
