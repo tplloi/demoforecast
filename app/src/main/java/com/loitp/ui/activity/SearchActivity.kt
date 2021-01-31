@@ -53,7 +53,6 @@ class SearchActivity : BaseFontActivity() {
     }
 
     private fun setupViews() {
-        etSearch.setText(prevKeySearch)
         etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -70,6 +69,7 @@ class SearchActivity : BaseFontActivity() {
             }
 
         })
+        etSearch.setText(prevKeySearch)
         LUIUtil.setImeiActionSearch(editText = etSearch, actionSearch = Runnable {
             search()
         })
