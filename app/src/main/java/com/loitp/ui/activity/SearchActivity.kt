@@ -90,7 +90,6 @@ class SearchActivity : BaseFontActivity() {
                 } else {
                     btClearText.visibility = View.VISIBLE
                 }
-                mainViewModel?.setKeySearchLiveData(keySearch = s?.toString() ?: "")
             }
 
         })
@@ -135,7 +134,7 @@ class SearchActivity : BaseFontActivity() {
             showShortInformation(getString(R.string.pls_input_your_location))
             return
         }
+        mainViewModel?.setKeySearchLiveData(keySearch = keyword)
     }
-
 
 }

@@ -63,8 +63,8 @@ class OnlineSearchFragment : BaseFragment() {
                     )
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe({
-                                logD("loadData success " + BaseApplication.gson.toJson(it))
+                            .subscribe({ openCageData ->
+                                logD("loadData success " + BaseApplication.gson.toJson(openCageData))
                             }, {
                                 logE("loadData error $it")
                             }))
