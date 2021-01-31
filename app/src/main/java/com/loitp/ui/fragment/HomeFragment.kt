@@ -119,6 +119,12 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     override fun onRefresh() {
         if (activity is MainActivity) {
             (activity as MainActivity).requestLocation()
+            hideLoading()
         }
+    }
+
+    fun updateCurrentLocation(keySearch: String) {
+        btSearch.text = keySearch
+        //TODO call api
     }
 }

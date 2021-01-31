@@ -65,6 +65,8 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
     private var mCurrentLocation: Location? = null
     private var currentItemId = R.id.navHome
     private var isBottomSheetFragmentShowing = false
+    private var homeFragment = HomeFragment()
+    private var settingFragment = SettingFragment()
 
     override fun setLayoutResourceId(): Int {
         return R.layout.activity_main
@@ -160,14 +162,19 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
                 LScreenUtil.replaceFragment(
                         this,
                         R.id.flContainer,
-                        HomeFragment(),
+                        homeFragment,
                         false
                 )
             }
             R.id.navSetting -> {
                 logD("onNavigationItemSelected navHome")
                 currentItemId = R.id.navSetting
-                LScreenUtil.replaceFragment(this, R.id.flContainer, SettingFragment(), false)
+                LScreenUtil.replaceFragment(
+                        activity = this,
+                        containerFrameLayoutIdRes = R.id.flContainer,
+                        fragment = settingFragment,
+                        isAddToBackStack = false
+                )
             }
             R.id.navGithub -> {
                 LSocialUtil.openUrlInBrowser(context = this, url = "https://github.com/tplloi/vnexpress")
@@ -273,14 +280,17 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
         mCurrentLocation?.let {
 
             var moreInformation = ""
+            var mState = ""
             LLocationUtil.getCityByLatLon(
                     latitude = it.latitude,
                     longitude = it.longitude)
             { address: String, city: String, state: String, country: String ->
                 moreInformation += "$address - $city - $state - $country"
+                mState = state
             }
 
             logD("updateLocationUI Lat: " + it.latitude + ", " + "Lng: " + it.longitude + ", more moreInformation: $moreInformation")
+
             isBottomSheetFragmentShowing = true
             showBottomSheetOptionFragment(
                     isCancelableFragment = false,
@@ -292,6 +302,7 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
                     onClickButton1 = {
                         //TODO yes
                         isBottomSheetFragmentShowing = false
+                        homeFragment.updateCurrentLocation(keySearch = mState)
                     },
                     onClickButton2 = {
                         //TODO no
