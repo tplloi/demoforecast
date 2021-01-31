@@ -6,11 +6,11 @@
     <string name="link_gg_drive"><![CDATA[https://drive.google.com/uc?export=download&id=1femuL17MUTz7t0yqUkMWB5yCea1W6kqI]]></string><!--no need to edit this-->
     <string name="link_cover"><![CDATA[https://live.staticflickr.com/4380/35997985613_8fd2eab2d9_c.jpg]]></string>
 
-    <!---->
-    <string name="str_b">a</string>
-    <string name="str_f">a</string>
+    <!--https://apps.admob.com/v2/apps/7162042633/overview-->
+    <string name="str_b">ca-app-pub-3165963943681013/4013135114</string>
+    <string name="str_f">ca-app-pub-3165963943681013/5134645096</string>
 <!--    <string name="str_reward">a</string>-->
-    <string name="str_app_id">a</string>
+    <string name="str_app_id">ca-app-pub-3165963943681013~7162042633</string>
 
     <string name="deny">Deny</string>
     <string name="yes">Yes</string>
