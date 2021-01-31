@@ -6,5 +6,4 @@ package com.loitp.constant
  * www.muathu@gmail.com
  */
 object Cons {
-
 }
