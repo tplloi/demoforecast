@@ -58,7 +58,13 @@ class OnlineSearchFragment : BaseFragment() {
         mainViewModel?.let { mvm ->
             mvm.keySearchLiveData.observe(viewLifecycleOwner, Observer { keySearch ->
                 logD("keySearchLiveData observe keySearch $keySearch")
-                getCageData(keySearch = keySearch)
+
+                if (keySearch.isNullOrEmpty()) {
+                    openCageDataResultAdapter?.setItems(emptyList())
+                    indicatorView.smoothToHide()
+                } else {
+                    getCageData(keySearch = keySearch)
+                }
             })
         }
 
@@ -68,6 +74,7 @@ class OnlineSearchFragment : BaseFragment() {
         logD("getCageData keySearch $keySearch")
         openCageDataService?.let { sv ->
             indicatorView.smoothToShow()
+            openCageDataResultAdapter?.setItems(emptyList())
             compositeDisposable.clear()
             compositeDisposable.add(
                     sv.getGeoCode(
@@ -82,7 +89,7 @@ class OnlineSearchFragment : BaseFragment() {
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe({ openCageData ->
-                                logD("loadData success " + BaseApplication.gson.toJson(openCageData))
+//                                logD("loadData success " + BaseApplication.gson.toJson(openCageData))
                                 openCageDataResultAdapter?.setItems(openCageData.results)
                                 indicatorView.smoothToHide()
                             }, {

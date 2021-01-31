@@ -37,6 +37,7 @@
             android:singleLine="true"
             android:textColor="?attr/themeTextColor"
             android:textColorHint="?attr/themeTextColor"
+            android:textCursorDrawable="?attr/themeTextColor"
             android:textSize="@dimen/txt_large"
             tools:text="Saigon" />
 
