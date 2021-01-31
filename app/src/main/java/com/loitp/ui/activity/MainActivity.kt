@@ -119,14 +119,14 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
         // Resuming location updates depending on button state and
         // allowed permissions
         if (checkPermissions()) {
-            startLocationUpdates()
+            startLocationWithPermisson()
         }
         updateLocationUI()
     }
 
     public override fun onDestroy() {
         adView.destroy()
-        stopLocationButtonClick()
+        stopLocationUpdates()
         super.onDestroy()
     }
 
@@ -315,7 +315,7 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
         }
     }
 
-    private fun startLocationButtonClick() {
+    private fun startLocationWithPermisson() {
         // Requesting ACCESS_FINE_LOCATION using Dexter library
         Dexter.withContext(this)
                 .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
@@ -336,10 +336,6 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
                         token.continuePermissionRequest()
                     }
                 }).check()
-    }
-
-    private fun stopLocationButtonClick() {
-        stopLocationUpdates()
     }
 
     private fun stopLocationUpdates() {
