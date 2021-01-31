@@ -53,17 +53,6 @@ class SearchActivity : BaseFontActivity() {
     }
 
     private fun setupViews() {
-//        rssItem?.let { item ->
-//            LImageUtil.load(context = this, any = item.image, imageView = ivBkg)
-//            collapsingToolbarLayout.title = item.title
-//        }
 
-        collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE)
-        collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE)
-
-        toolbar.navigationIcon = LAppResource.getDrawable(R.drawable.ic_keyboard_backspace_white_48dp)
-        toolbar.setNavigationOnClickListener {
-            onBackPressed()
-        }
     }
 }
