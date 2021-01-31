@@ -17,6 +17,7 @@
         android:singleLine="true"
         android:textColor="?attr/themeTextColor"
         android:textSize="@dimen/text_small"
+        android:textStyle="italic"
         tools:text="@string/app_name" />
 
     <View

@@ -58,6 +58,11 @@ class OfflineKeyFragment : BaseFragment() {
             })
             mvm.offlineListOpenCageDataLiveData.observe(viewLifecycleOwner, Observer { listResult ->
                 offlineResultAdapter?.setItems(items = listResult)
+                if (listResult.isNullOrEmpty()) {
+                    tvLabelSuggestion.visibility = View.GONE
+                } else {
+                    tvLabelSuggestion.visibility = View.VISIBLE
+                }
             })
         }
 
