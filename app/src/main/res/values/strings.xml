@@ -37,5 +37,6 @@
     <string name="github">Github</string>
     <string name="dark_mode">Dark mode</string>
     <string name="setting_success">Success</string>
+    <string name="pls_input_your_location">Please input your location...</string>
 
 </resources>

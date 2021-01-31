@@ -13,6 +13,7 @@ import com.core.base.BaseApplication
 import com.core.base.BaseFontActivity
 import com.core.common.Constants
 import com.core.utilities.LAppResource
+import com.core.utilities.LUIUtil
 import com.loitp.R
 import com.loitp.model.DummyItem
 import com.rss.RssItem
@@ -73,11 +74,22 @@ class SearchActivity : BaseFontActivity() {
             }
 
         })
+        LUIUtil.setImeiActionSearch(editText = etSearch, actionSearch = Runnable {
+            search()
+        })
         btClearText.setSafeOnClickListener {
             etSearch.setText("")
         }
         btSearch.setSafeOnClickListener {
+            search()
+        }
+    }
 
+    private fun search() {
+        val keyword = etSearch.text.toString()
+        if (keyword.isEmpty()) {
+            showShortInformation(getString(R.string.pls_input_your_location))
+            return
         }
     }
 }
