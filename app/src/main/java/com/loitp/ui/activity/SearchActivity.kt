@@ -10,8 +10,11 @@ import com.annotation.IsFullScreen
 import com.annotation.LogTag
 import com.core.base.BaseFontActivity
 import com.core.common.Constants
+import com.core.utilities.LScreenUtil
 import com.core.utilities.LUIUtil
 import com.loitp.R
+import com.loitp.ui.fragment.OfflineKeyFragment
+import com.loitp.ui.fragment.OnlineSearchFragment
 import com.skydoves.transformationlayout.TransformationCompat
 import com.skydoves.transformationlayout.TransformationLayout
 import com.skydoves.transformationlayout.onTransformationEndContainer
@@ -37,6 +40,8 @@ class SearchActivity : BaseFontActivity() {
     }
 
     private var prevKeySearch: String = ""
+    private val offlineKeyFragment = OfflineKeyFragment()
+    private val onlineSearchFragment = OnlineSearchFragment()
 
     override fun setLayoutResourceId(): Int {
         return R.layout.activity_layout_search
@@ -53,6 +58,18 @@ class SearchActivity : BaseFontActivity() {
     }
 
     private fun setupViews() {
+        LScreenUtil.replaceFragment(
+                activity = this,
+                containerFrameLayoutIdRes = R.id.layoutContainerOfflineKey,
+                fragment = offlineKeyFragment,
+                isAddToBackStack = false
+        )
+        LScreenUtil.replaceFragment(
+                activity = this,
+                containerFrameLayoutIdRes = R.id.layoutContainerOnlineSearch,
+                fragment = onlineSearchFragment,
+                isAddToBackStack = false
+        )
         etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
@@ -88,4 +105,6 @@ class SearchActivity : BaseFontActivity() {
             return
         }
     }
+
+
 }

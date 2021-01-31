@@ -33,8 +33,10 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/transparent"
+            android:hint="@string/input_your_city"
             android:singleLine="true"
             android:textColor="?attr/themeTextColor"
+            android:textColorHint="?attr/themeTextColor"
             android:textSize="@dimen/txt_large"
             tools:text="Saigon" />
 
@@ -49,5 +51,16 @@
             app:tint="?attr/themeTextColor"
             tools:visibility="visible" />
     </LinearLayout>
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/layoutContainerOfflineKey"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/layoutContainerOnlineSearch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_medium" />
 
 </LinearLayout>
