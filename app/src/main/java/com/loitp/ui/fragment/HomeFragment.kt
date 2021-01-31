@@ -11,6 +11,7 @@ import com.annotation.LogTag
 import com.core.base.BaseApplication
 import com.core.base.BaseFragment
 import com.core.utilities.LConnectivityUtil
+import com.google.ads.interactivemedia.v3.internal.it
 import com.loitp.BuildConfig
 import com.loitp.R
 import com.loitp.adapter.OpenCageDataResultAdapter
@@ -135,6 +136,8 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 
         openWeatherService?.let { sv ->
             compositeDisposable.clear()
+            animationView.visibility = View.VISIBLE
+            showLoading()
             compositeDisposable.add(
                     sv.getWeather(
                             lat = lat ?: 0.0,
@@ -146,8 +149,13 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe({ openCageData ->
                                 logD("<<< success " + BaseApplication.gson.toJson(openCageData))
+                                animationView.visibility = View.GONE
+                                hideLoading()
+                                //TODO
                             }, {
                                 logE("<<< error $it")
+                                animationView.visibility = View.GONE
+                                hideLoading()
                                 val msg = if (LConnectivityUtil.isConnected()) {
                                     getString(R.string.no_data_eng)
                                 } else {
