@@ -70,26 +70,14 @@ android {
             applicationId = "loitp.demo.forecast.dev"
             dimension "type"
             resValue "string", "app_name", "Demo Forecast DEV"
-
-//            buildConfigField("String", "FLAVOR_buildEnv", '"dev"')
-//            buildConfigField("String", "API_ENDPOINT", '"https://api.dev.cloudhms.io/"')
-//            buildConfigField("String", "API_ENDPOINT_CONFIG", '"https://statics.dev.cloudhms.io/"')
-//            buildConfigField("String", "API_TOKEN_OTP", '"https://api.dev.cloudhms.io/ats-identity-password/v1/token/generate"')
-//            buildConfigField("String", "DOMAIN_ENDPOINT", '"api.dev.cloudhms.io"')
-//            buildConfigField("String", "APP_CENTER_SECRET", '"ed0df1e8-938b-40a2-b9fc-5287a0992f6c"')
+            buildConfigField("String", "FLAVOR_buildEnv", '"dev"')
         }
 
         stg {
             applicationId = "loitp.demo.forecast.dev.stg"
             dimension "type"
             resValue "string", "app_name", "Demo Forecast STG"
-
-//            buildConfigField("String", "FLAVOR_buildEnv", '"stg"')
-//            buildConfigField("String", "API_ENDPOINT", '"https://api.stg.cloudhms.io/"')
-//            buildConfigField("String", "API_ENDPOINT_CONFIG", '"https://statics.stg.cloudhms.io/"')
-//            buildConfigField("String", "API_TOKEN_OTP", '"https://api.stg.cloudhms.io/ats-identity-password/v1/token/generate"')
-//            buildConfigField("String", "DOMAIN_ENDPOINT", '"api.stg.cloudhms.io"')
-//            buildConfigField("String", "APP_CENTER_SECRET", '"129cb038-67d8-4e5a-8c4f-98381f03cfec"')
+            buildConfigField("String", "FLAVOR_buildEnv", '"stg"')
         }
 
         production {
@@ -97,12 +85,6 @@ android {
             dimension "type"
             resValue "string", "app_name", "Demo Forecast"
             buildConfigField("String", "FLAVOR_buildEnv", '"prod"')
-
-//            buildConfigField("String", "API_ENDPOINT", '"https://premium-api.product.cloudhms.io/"')
-//            buildConfigField("String", "API_ENDPOINT_CONFIG", '"https://statics.product.cloudhms.io/"')
-//            buildConfigField("String", "API_TOKEN_OTP", '"https://premium-api.product.cloudhms.io/ats-identity-password/v1/token/generate"')
-//            buildConfigField("String", "DOMAIN_ENDPOINT", '"premium-api.product.cloudhms.io"')
-//            buildConfigField("String", "APP_CENTER_SECRET", '"bda69adf-412b-450d-8336-eadb6ded21a0"')
         }
 
     }
@@ -114,6 +96,7 @@ repositories {
 }
 
 dependencies {
+    //TODO upgrade and check func location
     api 'com.github.tplloi:basemaster:4.4.41'
 
     //https://github.com/shiburagi/Drawer-Behavior

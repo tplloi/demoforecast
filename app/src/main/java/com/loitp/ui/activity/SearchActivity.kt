@@ -2,21 +2,16 @@ package com.loitp.ui.activity
 
 import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import com.annotation.IsFullScreen
 import com.annotation.LogTag
-import com.core.base.BaseApplication
 import com.core.base.BaseFontActivity
 import com.core.common.Constants
-import com.core.utilities.LAppResource
 import com.core.utilities.LUIUtil
 import com.loitp.R
-import com.loitp.model.DummyItem
-import com.rss.RssItem
 import com.skydoves.transformationlayout.TransformationCompat
 import com.skydoves.transformationlayout.TransformationLayout
 import com.skydoves.transformationlayout.onTransformationEndContainer
@@ -41,7 +36,7 @@ class SearchActivity : BaseFontActivity() {
         }
     }
 
-    private var keySearch: String = ""
+    private var prevKeySearch: String = ""
 
     override fun setLayoutResourceId(): Int {
         return R.layout.activity_layout_search
@@ -51,13 +46,14 @@ class SearchActivity : BaseFontActivity() {
         onTransformationEndContainer(intent.getParcelableExtra(Constants.activityTransitionName))
         super.onCreate(savedInstanceState)
 
-        keySearch = intent?.getStringExtra(KEY_SEARCH) ?: ""
-        logD("onCreate keySearch $keySearch")
+        prevKeySearch = intent?.getStringExtra(KEY_SEARCH) ?: ""
+        logD("onCreate keySearch $prevKeySearch")
 
         setupViews()
     }
 
     private fun setupViews() {
+        etSearch.setText(prevKeySearch)
         etSearch.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
             }
