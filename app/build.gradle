@@ -107,5 +107,8 @@ dependencies {
 
     //https://github.com/shiburagi/Drawer-Behavior
     api 'com.infideap.drawerbehavior:drawer-behavior:1.0.1'
+
+    //room
+    kapt "androidx.room:room-compiler:2.2.6"
 }
 //apply plugin: 'com.google.gms.google-services'

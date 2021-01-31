@@ -72,8 +72,7 @@ class MainViewModel(
             val id = AppDatabase.instance?.openCageDataDao()?.insert(t = result)
             logD("save id $id")
 
-            val list = getListOpenCageData("")
-            logD("list " + BaseApplication.gson.toJson(list))
+            getListOpenCageData("")
         }
     }
 
@@ -81,7 +80,8 @@ class MainViewModel(
         logD("getListOpenCageData formatted $formatted")
         ioScope.launch {
 //            AppDatabase.instance?.openCageDataDao()?.getListResult(formatted = formatted)
-            AppDatabase.instance?.openCageDataDao()?.getListResult()
+            val list = AppDatabase.instance?.openCageDataDao()?.getListResult()
+            logD("getListOpenCageData list " + BaseApplication.gson.toJson(list))
         }
     }
 }

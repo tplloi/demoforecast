@@ -12,7 +12,7 @@ import com.loitp.model.opencagedata.Result
 
 @Database(
         entities = [Result::class],
-        version = 2
+        version = 1
 )
 abstract class AppDatabase : RoomDatabase() {
 

@@ -23,26 +23,26 @@ data class Result(
         @ColumnInfo(name = "bounds")
         @SerializedName("bounds")
         @Expose
-        val bounds: Bounds? = null,
+        var bounds: Bounds? = null,
 
         @ColumnInfo(name = "components")
         @SerializedName("components")
         @Expose
-        val components: Components? = null,
+        var components: Components? = null,
 
         @ColumnInfo(name = "confidence")
         @SerializedName("confidence")
         @Expose
-        val confidence: Int = 0,
+        var confidence: Int = 0,
 
         @PrimaryKey
         @ColumnInfo(name = "formatted")
         @SerializedName("formatted")
         @Expose
-        val formatted: String = "",
+        var formatted: String = "",
 
         @ColumnInfo(name = "geometry")
         @SerializedName("geometry")
         @Expose
-        val geometry: Geometry? = null
+        var geometry: Geometry? = null
 )
