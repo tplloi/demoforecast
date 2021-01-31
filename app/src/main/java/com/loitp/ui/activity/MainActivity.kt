@@ -47,13 +47,13 @@ import kotlinx.android.synthetic.main.view_drawer_main.*
 class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     companion object {
-        // location updates interval - 10min
-        private const val UPDATE_INTERVAL_IN_MILLISECONDS: Long = 10 * 60 * 1000
+        // location updates interval - 60min
+        private const val UPDATE_INTERVAL_IN_MILLISECONDS: Long = 60 * 60 * 1000
 
-        // fastest updates interval - 5 min
+        // fastest updates interval - 50 min
         // location updates will be received if another app is requesting the locations
         // than your app can handle
-        private const val FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS: Long = 5 * 60 * 1000
+        private const val FASTEST_UPDATE_INTERVAL_IN_MILLISECONDS: Long = 50 * 60 * 1000
         private const val REQUEST_CHECK_SETTINGS = 100
     }
 
@@ -273,6 +273,19 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
             }
 
             logD("updateLocationUI Lat: " + it.latitude + ", " + "Lng: " + it.longitude + ", more moreInformation: $moreInformation")
+            showBottomSheetOptionFragment(
+                    isCancelableFragment = false,
+                    isShowIvClose = true,
+                    title = getString(R.string.warning),
+                    message = "Are you in $moreInformation?",
+                    textButton1 = getString(R.string.yes),
+                    textButton2 = getString(R.string.no),
+                    onClickButton1 = {
+                        //TODO yes
+                    },
+                    onClickButton2 = {
+                        //TODO no
+                    })
         }
     }
 

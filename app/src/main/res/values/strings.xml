@@ -38,5 +38,6 @@
     <string name="dark_mode">Dark mode</string>
     <string name="setting_success">Success</string>
     <string name="pls_input_your_location">Please input your location...</string>
+    <string name="no">No</string>
 
 </resources>
