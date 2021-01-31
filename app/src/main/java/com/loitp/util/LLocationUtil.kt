@@ -22,7 +22,6 @@ object LLocationUtil {
             val country = addresses[0].countryName ?: ""
             result?.invoke(address, city, state, country)
         } catch (e: IOException) {
-            Log.e("loitpp", e.toString())
             e.printStackTrace()
             result?.invoke("", "", "", "")
         }

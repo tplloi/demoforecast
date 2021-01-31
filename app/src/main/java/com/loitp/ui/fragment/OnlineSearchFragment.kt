@@ -11,13 +11,14 @@ import com.loitp.BuildConfig
 import com.loitp.R
 import com.loitp.adapter.OpenCageDataResultAdapter
 import com.loitp.service.OpenCageDataService
+import com.loitp.ui.activity.SearchActivity
 import com.loitp.viewmodels.MainViewModel
 import com.restapi.restclient.RestClient2
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.frm_online_search.*
 
-@LogTag("loitppOnlineSearchFragment")
+@LogTag("OnlineSearchFragment")
 class OnlineSearchFragment : BaseFragment() {
 
     private var mainViewModel: MainViewModel? = null
@@ -40,8 +41,11 @@ class OnlineSearchFragment : BaseFragment() {
 
     private fun setupViews() {
         openCageDataResultAdapter = OpenCageDataResultAdapter { result ->
-            logD("OpenCageDataResultAdapter result " + result.formatted + " - " + result.geometry?.lat + " - " + result.geometry?.lng)
+//            logD("OpenCageDataResultAdapter result " + result.formatted + " - " + result.geometry?.lat + " - " + result.geometry?.lng)
             mainViewModel?.saveOpenCageData(result = result)
+            if (activity is SearchActivity) {
+                (activity as SearchActivity).initLocation(result = result)
+            }
         }
         openCageDataResultAdapter?.let {
             concatAdapter.addAdapter(it)

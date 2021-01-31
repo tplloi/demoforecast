@@ -14,6 +14,7 @@ import com.core.common.Constants
 import com.core.utilities.LScreenUtil
 import com.core.utilities.LUIUtil
 import com.loitp.R
+import com.loitp.model.opencagedata.Result
 import com.loitp.ui.fragment.OfflineKeyFragment
 import com.loitp.ui.fragment.OnlineSearchFragment
 import com.loitp.viewmodels.MainViewModel
@@ -138,4 +139,7 @@ class SearchActivity : BaseFontActivity() {
         mainViewModel?.setKeySearchLiveData(keySearch = keyword)
     }
 
+    fun initLocation(result: Result) {
+        logD("initLocation result " + result.formatted)
+    }
 }

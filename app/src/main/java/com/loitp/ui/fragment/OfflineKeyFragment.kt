@@ -10,10 +10,11 @@ import com.core.base.BaseFragment
 import com.loitp.R
 import com.loitp.adapter.OfflineResultAdapter
 import com.loitp.adapter.OpenCageDataResultAdapter
+import com.loitp.ui.activity.SearchActivity
 import com.loitp.viewmodels.MainViewModel
 import kotlinx.android.synthetic.main.frm_offline_key.*
 
-@LogTag("loitppSearchKeyFragment")
+@LogTag("SearchKeyFragment")
 class OfflineKeyFragment : BaseFragment() {
 
     private var mainViewModel: MainViewModel? = null
@@ -34,8 +35,10 @@ class OfflineKeyFragment : BaseFragment() {
 
     private fun setupViews() {
         offlineResultAdapter = OfflineResultAdapter { result ->
-            logD("offlineResultAdapter result " + result.formatted + " - " + result.geometry?.lat + " - " + result.geometry?.lng)
-            //TODO
+//            logD("offlineResultAdapter result " + result.formatted + " - " + result.geometry?.lat + " - " + result.geometry?.lng)
+            if (activity is SearchActivity) {
+                (activity as SearchActivity).initLocation(result = result)
+            }
         }
         offlineResultAdapter?.let {
             concatAdapter.addAdapter(it)
