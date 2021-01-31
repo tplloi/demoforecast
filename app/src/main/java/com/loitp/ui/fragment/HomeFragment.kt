@@ -3,15 +3,13 @@ package com.loitp.ui.fragment
 import android.os.Bundle
 import android.os.SystemClock
 import android.view.View
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.ConcatAdapter
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.annotation.LogTag
 import com.core.base.BaseFragment
 import com.loitp.R
-import com.loitp.adapter.DummyItemsAdapter
-import com.loitp.model.DummyItem
+import com.loitp.adapter.OpenCageDataResultAdapter
 import com.loitp.ui.activity.MainActivity
 import com.loitp.ui.activity.SearchActivity
 import com.loitp.viewmodels.MainViewModel
@@ -22,7 +20,7 @@ import kotlinx.android.synthetic.main.frm_home.*
 class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     private var mainViewModel: MainViewModel? = null
     private val concatAdapter = ConcatAdapter()
-    private var dummyItemsAdapter: DummyItemsAdapter? = null
+    private var openCageDataResultAdapter: OpenCageDataResultAdapter? = null
     private var previousTimeSearch = SystemClock.elapsedRealtime()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -39,7 +37,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun setupViews() {
-        dummyItemsAdapter = DummyItemsAdapter { dummyItems, layoutItemRssTransformation ->
+        openCageDataResultAdapter = OpenCageDataResultAdapter { dummyItems, layoutItemRssTransformation ->
 //            context?.let { c ->
 //                val now = SystemClock.elapsedRealtime()
 //                if (now - previousTimeSearch >= layoutItemRssTransformation.duration) {
@@ -48,7 +46,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 //                }
 //            }
         }
-        dummyItemsAdapter?.let {
+        openCageDataResultAdapter?.let {
             concatAdapter.addAdapter(it)
         }
 
@@ -71,25 +69,22 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     private fun setupViewModels() {
         mainViewModel = getViewModel(MainViewModel::class.java)
         mainViewModel?.let { mvm ->
-            mvm.listDummyItemLiveData.observe(viewLifecycleOwner, Observer { listDummyItem ->
+//            mvm.listDummyItemLiveData.observe(viewLifecycleOwner, Observer { listDummyItem ->
 //                logD("<<<listRssItemLiveData " + BaseApplication.gson.toJson(listRssItem))
-                onDummyItemLoaded(listDummyItem = listDummyItem)
-            })
+
+//                resultAdapter?.setItems(listDummyItem)
+//                if (recyclerView.visibility != View.VISIBLE) {
+//                    recyclerView.visibility = View.VISIBLE
+//                }
+//                tvNoData.visibility = View.GONE
+//                animationView.visibility = View.GONE
+//            })
         }
 
     }
 
     private fun loadData() {
         mainViewModel?.loadData()
-    }
-
-    private fun onDummyItemLoaded(listDummyItem: List<DummyItem>) {
-        dummyItemsAdapter?.setItems(listDummyItem)
-        if (recyclerView.visibility != View.VISIBLE) {
-            recyclerView.visibility = View.VISIBLE
-        }
-        tvNoData.visibility = View.GONE
-        animationView.visibility = View.GONE
     }
 
     private fun showLoading() {

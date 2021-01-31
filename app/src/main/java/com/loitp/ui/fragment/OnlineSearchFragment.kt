@@ -3,11 +3,14 @@ package com.loitp.ui.fragment
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.ConcatAdapter
+import androidx.recyclerview.widget.GridLayoutManager
 import com.annotation.LogTag
 import com.core.base.BaseApplication
 import com.core.base.BaseFragment
 import com.loitp.BuildConfig
 import com.loitp.R
+import com.loitp.adapter.OpenCageDataResultAdapter
 import com.loitp.service.OpenCageDataService
 import com.loitp.viewmodels.MainViewModel
 import com.restapi.restclient.RestClient2
@@ -20,6 +23,8 @@ class OnlineSearchFragment : BaseFragment() {
 
     private var mainViewModel: MainViewModel? = null
     private var openCageDataService: OpenCageDataService? = null
+    private val concatAdapter = ConcatAdapter()
+    private var openCageDataResultAdapter: OpenCageDataResultAdapter? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -35,6 +40,22 @@ class OnlineSearchFragment : BaseFragment() {
     }
 
     private fun setupViews() {
+        openCageDataResultAdapter = OpenCageDataResultAdapter { dummyItems, layoutItemRssTransformation ->
+//            context?.let { c ->
+//                val now = SystemClock.elapsedRealtime()
+//                if (now - previousTimeSearch >= layoutItemRssTransformation.duration) {
+//                    DetailActivity.startActivity(context = c, transformationLayout = layoutItemRssTransformation, dummyItem = dummyItems)
+//                    previousTimeSearch = now
+//                }
+//            }
+        }
+        openCageDataResultAdapter?.let {
+            concatAdapter.addAdapter(it)
+        }
+
+        val gridLayoutManager = GridLayoutManager(context, 1)
+        recyclerView.layoutManager = gridLayoutManager
+        recyclerView.adapter = concatAdapter
     }
 
     private fun setupViewModels() {
@@ -67,6 +88,7 @@ class OnlineSearchFragment : BaseFragment() {
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe({ openCageData ->
                                 logD("loadData success " + BaseApplication.gson.toJson(openCageData))
+                                openCageDataResultAdapter?.setItems(openCageData.results)
                                 indicatorView.smoothToHide()
                             }, {
                                 logE("loadData error $it")

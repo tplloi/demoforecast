@@ -2,11 +2,8 @@ package com.loitp.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import com.annotation.LogTag
-import com.core.base.BaseApplication
 import com.core.base.BaseViewModel
-import com.core.helper.mup.girl.db.GirlDatabase
 import com.core.helper.mup.girl.model.GirlPage
-import com.loitp.model.DummyItem
 import com.service.livedata.ActionData
 import com.service.livedata.ActionLiveData
 import kotlinx.coroutines.launch
@@ -17,7 +14,7 @@ class MainViewModel(
 ) : BaseViewModel() {
 
     val currentLocationLiveData: MutableLiveData<String> = MutableLiveData()
-    val listDummyItemLiveData: MutableLiveData<List<DummyItem>> = MutableLiveData()
+//    val listDummyItemLiveData: MutableLiveData<List<DummyItem>> = MutableLiveData()
     val keySearchLiveData: MutableLiveData<String> = MutableLiveData()
 
     val pageActionLiveData: ActionLiveData<ActionData<ArrayList<GirlPage>>> = ActionLiveData()
@@ -60,6 +57,6 @@ class MainViewModel(
     }
 
     fun getGeoCode(keyWord: String) {
-        
+
     }
 }
