@@ -14,6 +14,7 @@ Skill:
 - Dexter.
 - Transform layout
 - Admob
+- Dark mode supported.
 - etc,...
 
 API: 
