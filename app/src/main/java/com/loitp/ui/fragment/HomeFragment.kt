@@ -11,7 +11,6 @@ import com.annotation.LogTag
 import com.core.base.BaseApplication
 import com.core.base.BaseFragment
 import com.core.utilities.LConnectivityUtil
-import com.google.ads.interactivemedia.v3.internal.it
 import com.loitp.BuildConfig
 import com.loitp.R
 import com.loitp.adapter.OpenCageDataResultAdapter
@@ -25,7 +24,6 @@ import com.views.setSafeOnClickListener
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.frm_home.*
-import kotlinx.android.synthetic.main.frm_home.recyclerView
 
 @LogTag("loitppHomeFragment")
 class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
@@ -147,11 +145,14 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
                     )
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
-                            .subscribe({ openCageData ->
-                                logD("<<< success " + BaseApplication.gson.toJson(openCageData))
+                            .subscribe({ openWeather ->
+                                logD("<<< success " + BaseApplication.gson.toJson(openWeather))
+                                val listDaily = openWeather.daily
+                                logD("listDaily ${listDaily.size} -> " + BaseApplication.gson.toJson(listDaily))
+
+
                                 animationView.visibility = View.GONE
                                 hideLoading()
-                                //TODO
                             }, {
                                 logE("<<< error $it")
                                 animationView.visibility = View.GONE
