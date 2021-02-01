@@ -7,7 +7,7 @@ import java.io.Serializable
 data class Daily(
         val clouds: Int = 0,
         val dew_point: Double = 0.0,
-        val dt: Int = 0,
+        val dt: Long = 0,
         val feels_like: FeelsLike? = null,
         val humidity: Int = 0,
         val pop: Int = 0,

@@ -1,11 +1,13 @@
 package com.loitp.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.annotation.LogTag
 import com.core.adapter.BaseAdapter
+import com.core.utilities.LDateUtil
 import com.loitp.R
 import com.loitp.model.openweather.Daily
 import kotlinx.android.synthetic.main.view_row_open_weather.view.*
@@ -42,8 +44,9 @@ class OpenWeatherAdapter(
 
     inner class DailyViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
+        @SuppressLint("SetTextI18n")
         fun bind(daily: Daily) {
-            itemView.tvDate.text = "${daily.dt}"
+            itemView.tvDt.text = "Date: " + LDateUtil.getDateCurrentTimeZone(timestamp = daily.dt, format = "EEEE, dd-MMM-yyyy")
             itemView.setOnClickListener {
                 onClick?.invoke(daily)
             }
