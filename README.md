@@ -13,6 +13,7 @@ Skill:
 - Room database.
 - Dexter.
 - Transform layout
+- Admob
 - etc,...
 
 API: 
