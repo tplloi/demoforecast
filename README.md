@@ -1,44 +1,33 @@
-BaseMaster
 
-This is Android base project. Architecturally composed of a set of libraries for building modern and scalable applications from the ground up.
+**demo forecast**
 
-Our architecture divides the typical layers of an Android application into simple coherent modules, which are completely independent from one another:
+This project help you get weather's information via your location.
 
-UI
-Services
-Database
-Crashlytics Logger
-In order to keep modules independent, we decoupled the behavior required for each layer into a single module, where everything comes together smoothly, which we call core. This not only allows you to choose which modules to use, but also gives you independence from any service or database oriented libraries we use.
 
-Author
 
-Loitp93
+Skill:
+- Kotlin, RxKotlin
+- MVVM pattern.
+- Retrofit
+- Customviews.
+- Room database.
+- Dexter.
+- Transform layout
+- etc,...
+
+API: 
+- OpenCagedata API
+- Open Weather API
+
+
+**Author**
+***Loitp93***
 
 Fb/loitp93
 Email: www.muathu@gmail.com
 Skype: www.muathu@gmail.com
-Phone: +84 76408 8864
-Git
+Phone: +84 76408 8864 | +84 766 04 02 93
 
-https://github.com/zladnrms/RoundableLayout
-
-https://github.com/gongwen/SwipeBackLayout
-
-https://github.com/Cutta/ContinuousScrollableImageView
-
-https://github.com/gjiazhe/PanoramaImageView
-
-https://github.com/gjiazhe/ScrollParallaxImageView
-
-https://github.com/flavioarfaria/KenBurnsView
-
-https://github.com/hoang8f/android-flat-button
-
-https://github.com/venshine/GoodView
-
-https://github.com/ApplikeySolutions/CosmoCalendar
-
-https://github.com/ParkSangGwon/TedImagePicker
 
 License
 
