@@ -13,7 +13,7 @@ import com.core.base.BaseFragment
 import com.core.utilities.LConnectivityUtil
 import com.loitp.BuildConfig
 import com.loitp.R
-import com.loitp.adapter.OpenCageDataResultAdapter
+import com.loitp.adapter.OpenWeatherAdapter
 import com.loitp.service.OpenWeatherService
 import com.loitp.ui.activity.MainActivity
 import com.loitp.ui.activity.SearchActivity
@@ -34,7 +34,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     private var openWeatherService: OpenWeatherService? = null
     private var mainViewModel: MainViewModel? = null
     private val concatAdapter = ConcatAdapter()
-    private var openCageDataResultAdapter: OpenCageDataResultAdapter? = null
+    private var openWeatherAdapter: OpenWeatherAdapter? = null
     private var previousTimeSearch = SystemClock.elapsedRealtime()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -57,7 +57,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
     }
 
     private fun setupViews() {
-        openCageDataResultAdapter = OpenCageDataResultAdapter { dummyItems ->
+        openWeatherAdapter = OpenWeatherAdapter { dummyItems ->
 //            context?.let { c ->
 //                val now = SystemClock.elapsedRealtime()
 //                if (now - previousTimeSearch >= layoutItemRssTransformation.duration) {
@@ -66,7 +66,7 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
 //                }
 //            }
         }
-        openCageDataResultAdapter?.let {
+        openWeatherAdapter?.let {
             concatAdapter.addAdapter(it)
         }
 
@@ -146,11 +146,10 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
                             .subscribe({ openWeather ->
-                                logD("<<< success " + BaseApplication.gson.toJson(openWeather))
+//                                logD("<<< success " + BaseApplication.gson.toJson(openWeather))
                                 val listDaily = openWeather.daily
-                                logD("listDaily ${listDaily.size} -> " + BaseApplication.gson.toJson(listDaily))
-
-
+//                                logD("listDaily ${listDaily.size} -> " + BaseApplication.gson.toJson(listDaily))
+                                openWeatherAdapter?.setItems(listDaily = listDaily)
                                 animationView.visibility = View.GONE
                                 hideLoading()
                             }, {
