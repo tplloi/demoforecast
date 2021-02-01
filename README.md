@@ -31,7 +31,7 @@ Phone: +84 76408 8864 | +84 766 04 02 93
 
 License
 
-Copyright 2019 Loitp93
+Copyright 2021 Loitp93
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
