@@ -11,6 +11,7 @@ interface OpenWeatherService {
             @Query("lat") lat: Double,
             @Query("lon") lon: Double,
             @Query("exclude") exclude: String,
-            @Query("appid") appid: String
+            @Query("appid") appid: String,
+            @Query("units") units: String
     ): Observable<OpenWeather>
 }

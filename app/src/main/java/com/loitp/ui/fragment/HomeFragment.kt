@@ -141,7 +141,8 @@ class HomeFragment : BaseFragment(), SwipeRefreshLayout.OnRefreshListener {
                             lat = lat ?: 0.0,
                             lon = lon ?: 0.0,
                             exclude = "hourly,current,minutely,alerts",
-                            appid = BuildConfig.APP_ID_OPEN_WEATHER
+                            appid = BuildConfig.APP_ID_OPEN_WEATHER,
+                            units = "metric"
                     )
                             .subscribeOn(Schedulers.io())
                             .observeOn(AndroidSchedulers.mainThread())
