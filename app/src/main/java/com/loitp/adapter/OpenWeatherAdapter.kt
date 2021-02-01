@@ -51,6 +51,8 @@ class OpenWeatherAdapter(
             itemView.tvSunset.text = "Sunset: " + LDateUtil.getDateCurrentTimeZone(timestamp = daily.sunset, format = "HH:mm:ss")
             itemView.tvTempMax.text = "Max ${daily.temp?.max}°C"
             itemView.tvTempMin.text = "Max ${daily.temp?.min}°C"
+            itemView.tvPressure.text = "Pressure ${daily.pressure}"
+            itemView.tvHumidity.text = "Humidity ${daily.humidity}%"
             itemView.setOnClickListener {
                 onClick?.invoke(daily)
             }
