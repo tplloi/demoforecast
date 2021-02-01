@@ -53,6 +53,7 @@ class OpenWeatherAdapter(
             itemView.tvTempMin.text = "Max ${daily.temp?.min}°C"
             itemView.tvPressure.text = "Pressure ${daily.pressure}"
             itemView.tvHumidity.text = "Humidity ${daily.humidity}%"
+            itemView.tvWinSpeed.text = "Wind speed ${daily.wind_speed}m/s"
             itemView.setOnClickListener {
                 onClick?.invoke(daily)
             }

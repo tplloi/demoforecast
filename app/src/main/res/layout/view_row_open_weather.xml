@@ -152,6 +152,26 @@
                 android:textSize="@dimen/txt_medium"
                 app:drawableTint="?attr/themeTextColor"
                 tools:text="@string/app_name" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0.5dp"
+                android:layout_marginTop="@dimen/margin_small"
+                android:background="@color/lightGrey" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvWinSpeed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_small"
+                android:drawableStart="@drawable/ic_baseline_toys_24"
+                android:drawablePadding="@dimen/margin_small"
+                android:gravity="center_vertical"
+                android:singleLine="true"
+                android:textColor="?attr/themeTextColor"
+                android:textSize="@dimen/txt_medium"
+                app:drawableTint="?attr/themeTextColor"
+                tools:text="@string/app_name" />
         </LinearLayout>
 
     </LinearLayout>
