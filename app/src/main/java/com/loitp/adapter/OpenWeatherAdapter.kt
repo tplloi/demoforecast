@@ -47,6 +47,8 @@ class OpenWeatherAdapter(
         @SuppressLint("SetTextI18n")
         fun bind(daily: Daily) {
             itemView.tvDt.text = "Date: " + LDateUtil.getDateCurrentTimeZone(timestamp = daily.dt, format = "EEEE, dd-MMM-yyyy")
+            itemView.tvSunrise.text = "Sunrise: " + LDateUtil.getDateCurrentTimeZone(timestamp = daily.sunrise, format = "HH:mm:ss")
+            itemView.tvSunset.text = "Sunset: " + LDateUtil.getDateCurrentTimeZone(timestamp = daily.sunset, format = "HH:mm:ss")
             itemView.setOnClickListener {
                 onClick?.invoke(daily)
             }
