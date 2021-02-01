@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.annotation.LogTag
 import com.core.adapter.BaseAdapter
 import com.core.utilities.LDateUtil
+import com.core.utilities.LImageUtil
 import com.loitp.R
 import com.loitp.model.openweather.Daily
 import kotlinx.android.synthetic.main.view_row_open_weather.view.*
@@ -46,6 +47,7 @@ class OpenWeatherAdapter(
 
         @SuppressLint("SetTextI18n")
         fun bind(daily: Daily) {
+            LImageUtil.load(context = itemView.ivIcon.context, any = daily.getIcon(), imageView = itemView.ivIcon)
             itemView.tvDt.text = "Date: " + LDateUtil.getDateCurrentTimeZone(timestamp = daily.dt, format = "EEEE, dd-MMM-yyyy")
             itemView.tvSunrise.text = "Sunrise: " + LDateUtil.getDateCurrentTimeZone(timestamp = daily.sunrise, format = "HH:mm:ss")
             itemView.tvSunset.text = "Sunset: " + LDateUtil.getDateCurrentTimeZone(timestamp = daily.sunset, format = "HH:mm:ss")

@@ -17,11 +17,11 @@
         android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv"
-            android:layout_width="@dimen/w_100"
-            android:layout_height="wrap_content"
-            android:scaleType="centerCrop"
-            tools:src="@drawable/forecast" />
+            android:id="@+id/ivIcon"
+            android:layout_width="@dimen/w_150"
+            android:layout_height="@dimen/w_150"
+            android:scaleType="center"
+            tools:src="@drawable/ic_baseline_calendar_today_24" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -41,7 +41,7 @@
                 android:gravity="center_vertical"
                 android:singleLine="true"
                 android:textColor="?attr/themeTextColor"
-                android:textSize="@dimen/txt_medium"
+                android:textSize="@dimen/text_small"
                 app:drawableTint="?attr/themeTextColor"
                 tools:text="@string/app_name" />
 
@@ -61,7 +61,7 @@
                 android:gravity="center_vertical"
                 android:singleLine="true"
                 android:textColor="?attr/themeTextColor"
-                android:textSize="@dimen/txt_medium"
+                android:textSize="@dimen/text_small"
                 app:drawableTint="?attr/themeTextColor"
                 tools:text="@string/app_name" />
 
@@ -75,7 +75,7 @@
                 android:gravity="center_vertical"
                 android:singleLine="true"
                 android:textColor="?attr/themeTextColor"
-                android:textSize="@dimen/txt_medium"
+                android:textSize="@dimen/text_small"
                 app:drawableTint="?attr/themeTextColor"
                 tools:text="@string/app_name" />
 
@@ -95,7 +95,7 @@
                 android:gravity="center_vertical"
                 android:singleLine="true"
                 android:textColor="?attr/themeTextColor"
-                android:textSize="@dimen/txt_medium"
+                android:textSize="@dimen/text_small"
                 app:drawableTint="?attr/themeTextColor"
                 tools:text="@string/app_name" />
 
@@ -109,7 +109,7 @@
                 android:gravity="center_vertical"
                 android:singleLine="true"
                 android:textColor="?attr/themeTextColor"
-                android:textSize="@dimen/txt_medium"
+                android:textSize="@dimen/text_small"
                 app:drawableTint="?attr/themeTextColor"
                 tools:text="@string/app_name" />
 
@@ -129,7 +129,7 @@
                 android:gravity="center_vertical"
                 android:singleLine="true"
                 android:textColor="?attr/themeTextColor"
-                android:textSize="@dimen/txt_medium"
+                android:textSize="@dimen/text_small"
                 app:drawableTint="?attr/themeTextColor"
                 tools:text="@string/app_name" />
 
@@ -149,7 +149,7 @@
                 android:gravity="center_vertical"
                 android:singleLine="true"
                 android:textColor="?attr/themeTextColor"
-                android:textSize="@dimen/txt_medium"
+                android:textSize="@dimen/text_small"
                 app:drawableTint="?attr/themeTextColor"
                 tools:text="@string/app_name" />
 
@@ -169,7 +169,7 @@
                 android:gravity="center_vertical"
                 android:singleLine="true"
                 android:textColor="?attr/themeTextColor"
-                android:textSize="@dimen/txt_medium"
+                android:textSize="@dimen/text_small"
                 app:drawableTint="?attr/themeTextColor"
                 tools:text="@string/app_name" />
         </LinearLayout>

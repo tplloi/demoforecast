@@ -19,4 +19,13 @@ data class Daily(
         val weather: List<Weather>,
         val wind_deg: Int = 0,
         val wind_speed: Double = 0.0
-) : Serializable
+) : Serializable {
+    fun getIcon(): String {
+        return try {
+            val icon = weather[0].icon
+            "http://openweathermap.org/img/wn/${icon}@2x.png"
+        } catch (e: Exception) {
+            ""
+        }
+    }
+}
