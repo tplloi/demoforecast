@@ -72,9 +72,9 @@ android {
             resValue "string", "app_name", "Demo Forecast DEV"
             buildConfigField("String", "FLAVOR_buildEnv", '"dev"')
             buildConfigField("String", "BASE_URL_OPEN_CAGE_DATA", '"https://api.opencagedata.com/geocode/v1/"')
-            buildConfigField("String", "KEY_OPEN_CAGE_DATA", '"64b4adc491c8476e93772284769a4005"')
+            buildConfigField("String", "KEY_OPEN_CAGE_DATA", KEY_OPEN_CAGE_DATA)
             buildConfigField("String", "BASE_URL_OPEN_WEATHER", '"https://api.openweathermap.org/data/2.5/"')
-            buildConfigField("String", "APP_ID_OPEN_WEATHER", '"2ed34880c948e7e9434e5f951f96e18b"')
+            buildConfigField("String", "APP_ID_OPEN_WEATHER", APP_ID_OPEN_WEATHER)
         }
 
         stg {
@@ -83,9 +83,9 @@ android {
             resValue "string", "app_name", "Demo Forecast STG"
             buildConfigField("String", "FLAVOR_buildEnv", '"stg"')
             buildConfigField("String", "BASE_URL_OPEN_CAGE_DATA", '"https://api.opencagedata.com/geocode/v1/"')
-            buildConfigField("String", "KEY_OPEN_CAGE_DATA", '"64b4adc491c8476e93772284769a4005"')
+            buildConfigField("String", "KEY_OPEN_CAGE_DATA", KEY_OPEN_CAGE_DATA)
             buildConfigField("String", "BASE_URL_OPEN_WEATHER", '"https://api.openweathermap.org/data/2.5/"')
-            buildConfigField("String", "APP_ID_OPEN_WEATHER", '"2ed34880c948e7e9434e5f951f96e18b"')
+            buildConfigField("String", "APP_ID_OPEN_WEATHER", APP_ID_OPEN_WEATHER)
         }
 
         production {
@@ -94,9 +94,9 @@ android {
             resValue "string", "app_name", "Demo Forecast"
             buildConfigField("String", "FLAVOR_buildEnv", '"prod"')
             buildConfigField("String", "BASE_URL_OPEN_CAGE_DATA", '"https://api.opencagedata.com/geocode/v1/"')
-            buildConfigField("String", "KEY_OPEN_CAGE_DATA", '"64b4adc491c8476e93772284769a4005"')
+            buildConfigField("String", "KEY_OPEN_CAGE_DATA", KEY_OPEN_CAGE_DATA)
             buildConfigField("String", "BASE_URL_OPEN_WEATHER", '"https://api.openweathermap.org/data/2.5/"')
-            buildConfigField("String", "APP_ID_OPEN_WEATHER", '"2ed34880c948e7e9434e5f951f96e18b"')
+            buildConfigField("String", "APP_ID_OPEN_WEATHER", APP_ID_OPEN_WEATHER)
         }
 
     }
