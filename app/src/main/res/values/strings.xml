@@ -1,7 +1,4 @@
 <resources>
-<!--    <string name="app_name">Demo Forecast</string>-->
-<!--    <string name="app_name_vn">Demo Forecast</string>-->
-
 <!--    https://drive.google.com/file/d/1femuL17MUTz7t0yqUkMWB5yCea1W6kqI/view?usp=sharing-->
     <string name="link_gg_drive"><![CDATA[https://drive.google.com/uc?export=download&id=1femuL17MUTz7t0yqUkMWB5yCea1W6kqI]]></string><!--no need to edit this-->
     <string name="link_cover"><![CDATA[https://live.staticflickr.com/4380/35997985613_8fd2eab2d9_c.jpg]]></string>

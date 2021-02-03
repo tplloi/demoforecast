@@ -1,5 +1,5 @@
 
-**demo forecast**
+**Forecast**
 
 This project help you get weather's information via your location.
 
