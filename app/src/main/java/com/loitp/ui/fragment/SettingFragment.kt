@@ -51,7 +51,7 @@ class SettingFragment : BaseFragment() {
 
             dialog = LDialogUtil.showDialog2(
                     context = c,
-                    title = getString(com.R.string.warning_vn),
+                    title = getString(com.R.string.warning),
                     msg = getString(com.R.string.app_will_be_restarted_vn),
                     button1 = getString(com.R.string.cancel),
                     button2 = getString(com.R.string.ok),
