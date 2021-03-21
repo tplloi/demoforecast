@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "loitp.demo.forecast.prod",
+  "applicationId": "loitp.com.forecast.prod",
   "variantName": "processProductionReleaseResources",
   "elements": [
     {
@@ -12,7 +12,7 @@
       "filters": [],
       "versionCode": 1,
       "versionName": "1.0.1",
-      "outputFile": "Demo_Forecastrelease_1.0.1_1.apk"
+      "outputFile": "Forecast_release_1.0.1_1.apk"
     }
   ]
 }
