@@ -215,7 +215,7 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
                 )
             }
             R.id.navGithub -> {
-                LSocialUtil.openUrlInBrowser(context = this, url = "https://github.com/tplloi/vnexpress")
+                LSocialUtil.openUrlInBrowser(context = this, url = "https://github.com/tplloi/demoforecast")
             }
             R.id.navRateApp -> {
                 LSocialUtil.rateApp(activity = this, packageName = packageName)
@@ -237,7 +237,7 @@ class MainActivity : BaseFontActivity(), NavigationView.OnNavigationItemSelected
             }
             R.id.navAd -> {
                 val intent = Intent(this, AdHelperActivity::class.java)
-                intent.putExtra(Constants.AD_HELPER_IS_ENGLISH_LANGUAGE, false)
+                intent.putExtra(Constants.AD_HELPER_IS_ENGLISH_LANGUAGE, true)
                 startActivity(intent)
                 LActivityUtil.tranIn(this)
             }
