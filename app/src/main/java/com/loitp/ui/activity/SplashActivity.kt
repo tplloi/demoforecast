@@ -156,8 +156,7 @@ class SplashActivity : BaseFontActivity() {
 
     private fun checkReady() {
 
-        //for demo purpose
-        //TODO
+        //for demo purpose, hard code isOnlyForDemo = true
         val isOnlyForDemo = true
         if (isOnlyForDemo) {
             isCheckReadyDone = true
