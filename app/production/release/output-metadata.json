@@ -10,9 +10,9 @@
     {
       "type": "SINGLE",
       "filters": [],
-      "versionCode": 1,
-      "versionName": "1.0.1",
-      "outputFile": "Forecast_release_1.0.1_1.apk"
+      "versionCode": 2,
+      "versionName": "1.0.2",
+      "outputFile": "Forecast_release_1.0.2_2.apk"
     }
   ]
 }
